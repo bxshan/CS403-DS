@@ -1,0 +1,24 @@
+public class Enumerator {
+  private l;
+  private h;
+
+  public Enumerator(ll, hh) {
+    l = ll;
+    h = hh;
+  }
+
+  public hasNext() {
+    return l < h;
+  }
+
+  public next() {
+    if (!this.hasNext()) {
+      // i would throw an exception,
+      // but im not sure if javatown can do that
+      return l;
+    }
+    tmp = l;
+    l = l + 1;
+    return tmp;
+  }
+}

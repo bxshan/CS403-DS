@@ -1,0 +1,163 @@
+// @author Boxuan Shan
+// @version 09102024
+// @description work for the javatown linked-lists lab
+
+// ListUtil class, with several linked list utility methods
+public class ListUtil {
+  // @description returns the size of a given linked list
+  // @param head head of the ll
+  // @return an integer size of the number of nodes
+  public size(head) {
+    if (head.getPtr() == null) {
+      return 1;
+    } else {
+      return 1 + this.size(head.getPtr());
+    }
+  }
+
+  // @description returns the ith node of a ll
+  // @param head head of the ll
+  // @param i the ith node to get
+  // @return the value of the ith node
+  public get(head, i) {
+    if (i == 0) {
+      return head.getVal();
+    } else {
+      return this.get(head, i - 1);
+    }
+  }
+
+  // @description makes a list with n nodes all of v value
+  // @param n the number of nodes
+  // @param v the value for those nodes
+  // @return the head of the created ll
+  public makeList(n, v) {
+    if (n == 0) {
+      return null;
+    }
+
+    head = new node(v, null);
+    head.setPtr(this.makeList(n - 1, v));
+    return head;
+  }
+
+  // @description adds a node with value v at the end of a ll
+  // @param head head of the ll
+  // @param v the value of the new node
+  // @return null
+  public add(head, v) {
+    if (head.getPtr() != null) {
+      return this.add(head.getPtr(), v);
+    } else {
+      n = new node(v, null);
+      head.setPtr(n);
+    }
+  }
+
+  // @description removes all nodes with value v in a ll
+  // @param head head of the ll
+  // @param v the values to remove
+  // @return null
+  public remove(head, v) {
+    if (head.getPtr() != null) {
+      if (head.getPtr().getVal() == v) {
+        head.setPtr(head.getPtr().getPtr());
+      }
+      return this.remove(head.getPtr(), v);
+    } 
+  }
+
+  // @description reverses a linked list
+  // @param head head of the ll to reverse
+  // @return the head node of the reversed linked list
+  public reverse(head) {
+    if (head == null || head.getPtr() == null) {
+      return head;
+    }
+    r = this.reverse(head.getPtr());
+    head.getPtr().setPtr(head);
+    head.setPtr(null);
+    return r;
+  }
+},
+
+// node class, to construct a linked list
+public class node {
+  // value of the node
+  private val;
+  // next node in ll
+  private ptr;
+
+  // @description constructor, initializes val and ptr
+  // @param v val to set to
+  // @param p ptr to set to
+  public node(v, p) {
+    val = v;
+    ptr = p;
+  }
+
+  // @description returns the val of this node
+  // @return this.val
+  public getVal() {
+    return val;
+  }
+
+  // @description returns the ptr of this node
+  // @return this.ptr
+  public getPtr() {
+    return ptr;
+  }
+
+  // @description sets the val of this node
+  // @param v the value to set to
+  public setVal(v) {
+    val = v;
+  }
+
+  // @description sets the ptr of this node
+  // @param p the ptr to set to
+  public setPtr(p) {
+    ptr = p;
+  }
+}, 
+
+// @description Memorizer class, to track seen values
+public class Memorizer {
+  // the memory ll
+  private M;
+  // the current node in M being checked
+  private curr;
+  
+  // @description constructor, initializes M and curr
+  public Memorizer() {
+    M = null;
+    curr = null;
+  }
+
+  // @description checks if a value has been seen before
+  // @param n the value to check
+  // @return true if seen, false otherwise
+  public seen(n) {
+    if (M == null) {
+      M = new node(n, null);
+      curr = M;
+      return false;
+    }
+    if (curr.getVal() == n) {
+      curr = M;
+      return true;
+    } 
+    if (curr.getPtr() == null) {
+      n = new node(n, null);
+      curr.setPtr(n);
+      curr = M;
+      return false;
+    }
+    if (curr.getPtr() != null) {
+      curr = curr.getPtr();
+    } else {
+      return false;
+    }
+    return this.seen(n);
+  }
+}

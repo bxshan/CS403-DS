@@ -1,0 +1,6 @@
+# IGNORE JAVA COMPILATION FILES
+*.class
+*.ctxt
+
+# DS STORE
+.DS_Store

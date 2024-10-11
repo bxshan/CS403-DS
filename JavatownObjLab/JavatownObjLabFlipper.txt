@@ -1,0 +1,11 @@
+public class Flipper {
+  private val;
+
+  public Flipper() {
+    val = false;
+  }
+
+  public next() {
+    val = !val;
+  }
+}

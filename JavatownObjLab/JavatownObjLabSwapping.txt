@@ -1,0 +1,23 @@
+public class Container {
+  private stuff;
+
+  public Container(s) {
+    stuff = s;
+  }
+
+  public getStuff() {
+    return stuff;
+  }
+
+  public setStuff(s) {
+    stuff = s;
+  }
+}
+
+public class Swapper {
+  public swap(c1, c2) {
+    tmp = c2.getStuff();
+    c2.setStuff(c1.getStuff());
+    c1.setStuff(tmp);
+  }
+}

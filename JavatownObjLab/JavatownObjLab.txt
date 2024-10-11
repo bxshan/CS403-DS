@@ -1,0 +1,195 @@
+// @author Boxuan Shan
+// @version 08292024
+// @description work for the javatown objects lab
+
+// calculator class, with several operations
+public class Calculator {
+  // returns the sum of n and m
+  public add(n, m) {
+    return n + m;
+  }
+
+  // returns the difference of n and m
+  public subtract(n, m) {
+    return n - m;
+  }
+
+  // returns the product of n and m
+  public multiply(n, m) {
+    return n * m;
+  }
+
+  // returns the square of n
+  public square(n) {
+    return n * n;
+  }
+
+  // returns true if n is odd
+  public isOdd(n) {
+    return n % 2 == 1;
+  }
+
+  // returns the larger value between n and m
+  public max(n, m) {
+    if (n > m) {
+      return n;
+    } else {
+      return m;
+    }
+  }
+
+  // returns the absolute value of n
+  public abs(n) {
+    if (n < 0) {
+      return n * -1;
+    } else {
+      return n;
+    }
+  }
+};
+
+
+// box class that can hold a value
+public class Box {
+  private value;
+
+  // initializes value to v 
+  public Box(v) {
+    value = v;
+  }
+
+  // getter, returns value
+  public getValue() {
+    return value;
+  }
+
+  // setter, sets value
+  public setValue(v) {
+    value = v;
+  }
+}; 
+
+
+// counter class, counts up and down, can reset
+public class Counter {
+  private cnt;
+
+  // initializes cnt to 0
+  public Counter() {
+    cnt = 0;
+  }
+
+  // adds one to cnt
+  public tick() {
+    cnt = cnt + 1;
+  }
+
+  // resets cnt to 0
+  public reset() {
+    cnt = 0;
+  }
+
+  // getter, gets count
+  public getCount() {
+    return cnt;
+  }
+}; 
+
+
+// flipper class, flips a boolean value
+public class Flipper {
+  private val;
+
+  // val initializes to false
+  public Flipper() {
+    val = false;
+  }
+
+  // flips val 
+  public next() {
+    val = !val;
+  }
+};
+
+
+// fibber class, returns fibbonacci numbers
+public class Fibber {
+  private n1;
+  private n2;
+
+  // initializes n1 and n2 to the first 2 fib. numbers
+  public Fibber() {
+    n1 = 1;
+    n2 = 0;
+  }
+
+  // returns the next fib. number
+  public next() {
+    tmp = n1 + n2;
+    n1 = n2;
+    n2 = tmp;
+    return tmp; 
+  }
+}; 
+
+
+// container class that can hold a value
+public class Container {
+  private stuff;
+
+  // initializes stuff to a given s
+  public Container(s) {
+    stuff = s;
+  }
+
+  // getter, gets stuff 
+  public getStuff() {
+    return stuff;
+  }
+
+  // setter, sets stuff
+  public setStuff(s) {
+    stuff = s;
+  }
+}
+
+
+// swapper class, swaps 2 containers by value
+public class Swapper {
+  // swaps 2 containers by value
+  public swap(c1, c2) {
+    tmp = c2.getStuff();
+    c2.setStuff(c1.getStuff());
+    c1.setStuff(tmp);
+  }
+}; 
+
+
+// enumerator class, enumerates through a set of values
+public class Enumerator {
+  private l;
+  private h;
+
+  // initializes l and h to given values
+  public Enumerator(ll, hh) {
+    l = ll;
+    h = hh;
+  }
+
+  // boolean, returns whether a next value exists
+  public hasNext() {
+    return l < h;
+  }
+
+  // returns the next value in the range
+  public next() {
+    if (!this.hasNext()) {
+      // i would throw an exception,
+      // but im not sure if javatown can do that
+      return l;
+    }
+    tmp = l;
+    l = l + 1;
+    return tmp;
+  }
+};

@@ -1,0 +1,44 @@
+public class Calculator {
+  // returns the sum of n and m
+  public add(n, m) {
+    return n + m;
+  }
+
+  // returns the difference of n and m
+  public subtract(n, m) {
+    return n - m;
+  }
+
+  // returns the product of n and m
+  public multiply(n, m) {
+    return n * m;
+  }
+
+  // returns the square of n
+  public square(n) {
+    return n * n;
+  }
+
+  // returns true if n is odd
+  public isOdd(n) {
+    return n % 2 == 1;
+  }
+
+  // returns the larger value between n and m
+  public max(n, m) {
+    if (n > m) {
+      return n;
+    } else {
+      return m;
+    }
+  }
+
+  // returns the absolute value of n
+  public abs(n) {
+    if (n < 0) {
+      return n * -1;
+    } else {
+      return n;
+    }
+  }
+}

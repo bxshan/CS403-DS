@@ -1,0 +1,19 @@
+public class Counter {
+  private cnt;
+
+  public Counter() {
+    cnt = 0;
+  }
+
+  public tick() {
+    cnt = cnt + 1;
+  }
+
+  public reset() {
+    cnt = 0;
+  }
+
+  public getCount() {
+    return cnt;
+  }
+}
