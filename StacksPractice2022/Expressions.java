@@ -106,9 +106,14 @@ public class Expressions
     Stack<Integer> mem = new Stack<Integer>();
     for (int i = 0; i < exp.length(); i++) {
       String n = exp.substring(i, i+1);
-      
       if (n.matches("1|2|3|4|5|6|7|8|9|0")) {
-        mem.push(Integer.valueOf(n)); 
+        while (i < exp.length() && exp.substring(i, i + 1).matches("1|2|3|4|5|6|7|8|9|0")) {
+          n += exp.substring(i, i + 1);
+          i++;
+        }
+        i--; // Adjust the index because the for loop will increment it
+        n = n.substring(1);
+        mem.push(Integer.parseInt(n));
       } else if (n.equals("+")) {
         int N = mem.pop();
         mem.push(mem.pop() + N);
@@ -132,11 +137,11 @@ public class Expressions
   // Tester to check if infix to postfix and evaluate postfix work well
   public static void main(String[] args)
   {
-    String exp = "2 + 3 * 4";
-    test(exp, 14);
+    String exp = "20 * 40";
+    test(exp, 800);
 
-    exp = "1 * 2 / 3";
-    test(exp, 0);
+    exp = "3 + 4 * 5 - 6";
+    test(exp, 17);
 
     exp = "5 % 2 + 3 * 2 - 4 / 2";
     test(exp, 5);   
