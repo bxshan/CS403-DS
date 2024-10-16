@@ -1,6 +1,6 @@
 /**
  * Card.java
- * @author Boxuan Shan``
+ * @author Boxuan Shan
  * @version 10112024
  */
 public class Card {

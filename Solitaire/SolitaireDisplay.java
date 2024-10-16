@@ -12,7 +12,7 @@ public class SolitaireDisplay extends JComponent implements MouseListener
 	private static final int FACE_UP_OFFSET = (int) (15 * 2.5);  //distance for cascading face-up cards
 	private static final int FACE_DOWN_OFFSET = (int) (5 * 2.5);  //distance for cascading face-down cards
 
-	private JFrame frame;
+	public JFrame frame;
 	private int selectedRow = -1;
 	private int selectedCol = -1;
 	private Solitaire game;

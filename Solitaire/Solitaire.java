@@ -1,4 +1,9 @@
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
 import java.util.*;
+import javax.swing.*;
+
 
 public class Solitaire {
 	public static void main(String[] args) {
@@ -14,15 +19,18 @@ public class Solitaire {
   private boolean hasWon;
   private int score;
 
+  private Stack<String> moves;
+
 	public Solitaire() {
+    display = new SolitaireDisplay(this);
+    display.frame.addKeyListener(new listener());
+
     this.reset();
 
     this.hasWon = false;
 
     this.score = 0;
-
-		display = new SolitaireDisplay(this);
-	}
+  }
 
   private void reset() {
 		foundations = new Stack[4];
@@ -43,6 +51,8 @@ public class Solitaire {
     this.createStock();
 
     this.deal();
+
+    moves = new Stack<String>();  
   }
 
 	//returns the card on top of the stock,
@@ -218,6 +228,7 @@ public class Solitaire {
         if (!waste.empty() && canAddToPile(waste.peek(), i)) {
           this.piles[i].push(waste.pop());
           this.display.unselect();
+          break;
         }
       }
 
@@ -281,6 +292,7 @@ public class Solitaire {
         if (!piles[index].empty() && canAddToFoundation(piles[index].peek(), i)) {
           this.foundations[i].push(piles[index].pop());
           this.display.unselect();
+          break;
         }
       }
 
@@ -325,4 +337,19 @@ public class Solitaire {
 
 		System.out.println("pile #" + index + " clicked");
 	}
+
+  public class listener implements java.awt.event.KeyListener {
+    public void keyPressed(KeyEvent e) {
+      if (e.getKeyChar() == 'r') {
+        reset();
+      }
+    }
+
+    public void keyReleased(KeyEvent e) {
+    }
+
+    public void keyTyped(KeyEvent e) {
+    }
+
+  }
 }
