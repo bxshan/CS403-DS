@@ -4,8 +4,15 @@ import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
-
+/**
+ * Solitaire.java
+ * @author Boxuan Shan 
+ * @version 10212024
+ */
 public class Solitaire {
+  /**
+   * creates a new instance of the Solitaire class
+   */
 	public static void main(String[] args) {
 		new Solitaire();
 	}
@@ -21,6 +28,9 @@ public class Solitaire {
 
   private Stack<String> moves;
 
+  /**
+   *  Constructor for the Solitaire class
+   */
 	public Solitaire() {
     display = new SolitaireDisplay(this);
     display.frame.addKeyListener(new listener());
@@ -32,6 +42,10 @@ public class Solitaire {
     this.score = 0;
   }
 
+  /**
+   * resets the game, creating a new foundation, pile, stock, and waste
+   * also deals the cards to the piles 
+   */
   private void reset() {
 		foundations = new Stack[4];
 		piles = new Stack[7];
@@ -55,32 +69,62 @@ public class Solitaire {
     moves = new Stack<String>();  
   }
 
-	//returns the card on top of the stock,
-	//or null if the stock is empty
+  /**
+   * checks if the player has won 
+   * @return true if there are all 4 kings on the top of foundation piles 
+   */
+  public void checkIfWon() {
+    if (!foundations[0].empty() && foundations[0].peek().getRank() == 13 && 
+        !foundations[1].empty() && foundations[1].peek().getRank() == 13 &&
+        !foundations[2].empty() && foundations[2].peek().getRank() == 13 && 
+        !foundations[3].empty() && foundations[3].peek().getRank() == 13 &&
+        hasWon == false) {
+      System.out.println("YOU WIN!");
+      this.hasWon = true;
+      this.score++;
+      System.out.println("current score is: " + this.score);
+      System.out.println("click on stock to reset");
+        }
+  }
+
+  /**
+   * returns card on top of the stock or null if empty
+   * @return card on top of the stock or null if empty
+   */
 	public Card getStockCard() {
     return stock.empty() ? null : stock.peek();
 	}
 
-	//returns the card on top of the waste,
-	//or null if the waste is empty
+  /**
+   * returns card on top of waste, null if empty
+   * @return card on top of waste, null if empty
+   */
 	public Card getWasteCard() {
     return waste.empty() ? null : waste.peek();
 	}
 
-	//precondition:  0 <= index < 4
-	//postcondition: returns the card on top of the given
-	//               foundation, or null if the foundation
-	//               is empty
+  /**
+	 * @precondition  0 <= index < 4
+	 * @postcondition returns the card on top of the given foundation, 
+   *    or null if the foundation is empty
+   * @return card on top of the given foundation, null if empty
+	 */ 
 	public Card getFoundationCard(int index) {
     return foundations[index].empty() ? null : foundations[index].peek();
 	}
 
-	//precondition:  0 <= index < 7
-	//postcondition: returns a reference to the given pile
+  /**
+	 * @precondition  0 <= index < 7
+	 * @postcondition returns a reference to the given pile
+   * @return reference to the given pile
+   */
 	public Stack<Card> getPile(int index) {
     return piles[index];
 	}
 
+  /**
+   * creates stack of 52 cards, deals them randomly to stock 
+   */
   public void createStock() {
     ArrayList<Card> c = new ArrayList<Card>();
 
@@ -106,15 +150,19 @@ public class Solitaire {
     }
   }
 
+  /**
+   * deals three cards from stock to waste
+   */
   public void dealThreeCards() {
-    waste.push(stock.pop());
-    waste.peek().turnUp();
-    //for (int i = 0; i < 3 && !stock.empty(); i++) {
-    //  waste.push(stock.pop());
-    //  waste.peek().turnUp();
-    //}
+    for (int i = 0; i < 3 && !stock.empty(); i++) {
+      waste.push(stock.pop());
+      waste.peek().turnUp();
+    }
   }
 
+  /**
+   * resets the stock: moves all cards from waste back to stock
+   */
   public void resetStock() {
     while (!waste.empty()) {
       stock.push(waste.pop());
@@ -122,6 +170,9 @@ public class Solitaire {
     }
   }
 
+  /**
+   * deals cards from stock to piles in a triangular pattern
+   */
   public void deal() {
     for (int i = 0; i < 7; i++) {
       for (int j = 0; j < i + 1; j++) {
@@ -135,6 +186,12 @@ public class Solitaire {
     }
   }
 
+  /**
+   * checks if is valid to add given card to given pile
+   * @param c card to check 
+   * @param i index of pile to add
+   * @return true if card can be added to the pile
+   */
   public boolean canAddToPile(Card c, int i) {
     if (piles[i].empty()) {
       return c.getRank() == 13;
@@ -155,6 +212,11 @@ public class Solitaire {
     return false;
   }
 
+  /**
+   * removes all face up cards from given pile
+   * @param i index of the pile
+   * @return a stack of face up cards
+   */
   private Stack<Card> removeFaceUpCards(int i) {
     Stack<Card> c = new Stack<Card>();
     while (!piles[i].isEmpty() && piles[i].peek().isFaceUp()) {
@@ -163,12 +225,20 @@ public class Solitaire {
     return c;
   }
 
+  /**
+   * adds given stack of cards to given pile
+   * @param c stack of the cards to be added
+   */
   private void addToPile(Stack<Card> c, int i) {
     while (!c.empty()) {
       piles[i].push(c.pop());
     }
   }
 
+  /**
+   * checks if given card can be added to given foundation
+   * @param c card to check
+   */
   private boolean canAddToFoundation(Card c, int i) {
     if (this.foundations[i].empty()) {
       return c.getRank() == 1;
@@ -179,7 +249,9 @@ public class Solitaire {
   }
 
 
-	//called when the stock is clicked
+  /**
+   * called when stock is clicked
+   */
 	public void stockClicked() {
     if (this.hasWon) {
       hasWon = false;
@@ -202,7 +274,9 @@ public class Solitaire {
 		System.out.println("stock clicked");
 	}
 
-	//called when the waste is clicked
+  /**
+   * called when waste is clicked
+   */
 	public void wasteClicked() {
     if (!this.waste.empty() && !this.display.isWasteSelected() && 
         !this.display.isPileSelected()) {
@@ -238,10 +312,19 @@ public class Solitaire {
 		System.out.println("waste clicked");
 	}
 
-	//precondition:  0 <= index < 4
-	//called when given foundation is clicked
+  /**
+	 * called when given foundation is clicked
+   * @precondition  0 <= index < 4
+   * @param index index of foundation clicked
+   */
 	public void foundationClicked(int index) {
     int s = this.display.selectedPile();
+
+    if (!this.display.isWasteSelected() && !this.display.isPileSelected() && s == -1) {
+      this.display.selectFoundation(index);
+      System.out.println("!!selected foundation " + index);
+      return;
+    }
 
     if (this.display.isWasteSelected() && canAddToFoundation(waste.peek(), index)) {
       this.foundations[index].push(waste.pop());
@@ -252,24 +335,18 @@ public class Solitaire {
     }
     
     // logic to check if won
-    if (!foundations[0].empty() && foundations[0].peek().getRank() == 13 && 
-        !foundations[1].empty() && foundations[1].peek().getRank() == 13 &&
-        !foundations[2].empty() && foundations[2].peek().getRank() == 13 && 
-        !foundations[3].empty() && foundations[3].peek().getRank() == 13 &&
-        hasWon == false) {
-      System.out.println("YOU WIN!");
-      this.hasWon = true;
-      this.score++;
-      System.out.println("current score is: " + this.score);
-      System.out.println("click on stock to reset");
-        }
+    checkIfWon();
 
 		System.out.println("foundation #" + index + " clicked");
 	}
 
-	//precondition:  0 <= index < 7
-	//called when given pile is clicked
+  /**
+	 * called when given pile is clicked
+   * @precondition  0 <= index < 7
+   * @param index index of pile clicked
+   */
 	public void pileClicked(int index) {
+    
     if (this.piles[index].empty() && this.display.selectedPile() == -1) {
       return;
     }
@@ -278,12 +355,21 @@ public class Solitaire {
     if (this.display.isWasteSelected() && canAddToPile(waste.peek(), index)) {
       this.piles[index].push(waste.pop());
       this.display.unselect();
+      return;
+    } else if (this.display.isFoundationSelected() && 
+        canAddToPile(foundations[this.display.selectedPile()].peek(), index)) {
+      this.piles[index].push(foundations[this.display.selectedPile()].pop());
+      this.display.unselect();
+      return;
     }
 
     //logic for selecting and deselecting piles
     if (!this.display.isWasteSelected() && !this.display.isPileSelected() && 
-         !this.piles[index].empty() && this.piles[index].peek().isFaceUp()) {
+        !this.display.isFoundationSelected() && !this.piles[index].empty() && 
+        this.piles[index].peek().isFaceUp()) {
+      System.out.println("!!!");
       this.display.selectPile(index);
+      System.out.println("!!!");
     } else if (this.display.selectedPile() == index) {
       // double click automoves to foundation, if possible
       System.out.println("double clicked pile " + index);
@@ -298,18 +384,7 @@ public class Solitaire {
 
       this.display.unselect();
 
-
-      //if (!foundations[0].empty() && foundations[0].peek().getRank() == 13 && 
-      //    !foundations[1].empty() && foundations[1].peek().getRank() == 13 &&
-      //    !foundations[2].empty() && foundations[2].peek().getRank() == 13 && 
-      //    !foundations[3].empty() && foundations[3].peek().getRank() == 13 &&
-      //    hasWon == false) {
-      //  System.out.println("YOU WIN!");
-      //  this.hasWon = true;
-      //  this.score++;
-      //  System.out.println("current score is: " + this.score);
-      //  System.out.println("click on stock to reset");
-      //    }
+      checkIfWon();
     }
 
     //logic for moving in between piles
@@ -338,6 +413,11 @@ public class Solitaire {
 		System.out.println("pile #" + index + " clicked");
 	}
 
+  /**
+   * called when new game is clicked
+   * used to use keystrokes to perform certain functions
+   * @param e keyevent
+   */
   public class listener implements java.awt.event.KeyListener {
     public void keyPressed(KeyEvent e) {
       if (e.getKeyChar() == 'r') {
