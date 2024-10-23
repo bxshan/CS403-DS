@@ -6,11 +6,11 @@ import javax.swing.*;
 
 public class SolitaireDisplay extends JComponent implements MouseListener
 {
-	private static final int CARD_WIDTH = (int) (73 * 2.5);
-	private static final int CARD_HEIGHT = (int) (97 * 2.5);
-	private static final int SPACING = (int) (5 * 2.5);  //distance between cards
-	private static final int FACE_UP_OFFSET = (int) (15 * 2.5);  //distance for cascading face-up cards
-	private static final int FACE_DOWN_OFFSET = (int) (5 * 2.5);  //distance for cascading face-down cards
+	private static final int CARD_WIDTH = (int) (73 * 1.5);
+	private static final int CARD_HEIGHT = (int) (97 * 1.5);
+	private static final int SPACING = (int) (5 * 1.5);  //distance between cards
+	private static final int FACE_UP_OFFSET = (int) (15 * 1.5);  //distance for cascading face-up cards
+	private static final int FACE_DOWN_OFFSET = (int) (5 * 1.5);  //distance for cascading face-down cards
 
 	public JFrame frame;
 	private int selectedRow = -1;
@@ -58,8 +58,10 @@ public class SolitaireDisplay extends JComponent implements MouseListener
 			for (int j = 0; j < pile.size(); j++)
 			{
 				drawCard(g, pile.get(j), SPACING + (CARD_WIDTH + SPACING) * i, CARD_HEIGHT + 2 * SPACING + offset);
-				if (selectedRow == 1 && selectedCol == i && j == pile.size() - 1)
-					drawBorder(g, SPACING + (CARD_WIDTH + SPACING) * i, CARD_HEIGHT + 2 * SPACING + offset);
+				if (selectedRow == 1 && selectedCol == i && j == pile.size() - 1) {
+          drawBorder(g, SPACING + (CARD_WIDTH + SPACING) * i, CARD_HEIGHT + 2 * SPACING + offset);
+          System.out.println("Drawing border pile");
+        }
 
 				if (pile.get(j).isFaceUp())
 					offset += FACE_UP_OFFSET;
@@ -148,17 +150,29 @@ public class SolitaireDisplay extends JComponent implements MouseListener
 		selectedCol = 1;
 	}
 
+	public void selectFoundation(int index)
+	{
+		selectedRow = 0;
+		selectedCol = index;
+	}
+
 	public boolean isPileSelected()
 	{
 		return selectedRow == 1;
 	}
 
+	public boolean isFoundationSelected()
+	{
+		return selectedRow == 0;
+	}
+
 	public int selectedPile()
 	{
-		if (selectedRow == 1)
-			return selectedCol;
-		else
-			return -1;
+		if (selectedRow == 1 || selectedRow == 0) {
+      return selectedCol;
+    } else {
+      return -1;
+    }
 	}
 
 	public void selectPile(int index)
