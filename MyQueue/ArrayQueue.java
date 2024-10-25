@@ -33,7 +33,7 @@ public class ArrayQueue<E> implements MyQueue<E> {
   }
 
   public E peek() {
-    return (E) mem[size];
+    return (E) mem[size - 1];
   }
   
   public boolean isEmpty() {
