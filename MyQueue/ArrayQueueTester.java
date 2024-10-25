@@ -1,4 +1,13 @@
+/**
+ * ArrayQueueTester.java
+ * @author Boxuan Shan
+ * @version 10252024
+ */
 public class ArrayQueueTester<E> {
+  /**
+   * Main method for ArrayQueueTester
+   * @param args cmd-line args
+   */
   public static void main(String[] args) {
     ArrayQueue q = new ArrayQueue();
     q.enqueue(1);

@@ -1,4 +1,13 @@
+/**
+ * CafeteriaQueueTester.java
+ * @author Boxuan Shan
+ * @version 10262024
+ */
 public class CafeteriaQueueTester {
+  /**
+   * Main method for CafeteriaQueueTester
+   * @param args cmd-line args
+   */
   public static void main(String[] args) {
     CafeteriaQueue cq = new CafeteriaQueue();
 
