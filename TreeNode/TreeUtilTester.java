@@ -24,7 +24,7 @@ public class TreeUtilTester {
      *         /  \
      *        B    C
      *       / \  / \ 
-     *     [D] E F  G
+     *     [D] E F   G
      */
 
     System.out.println("leftmost node: " + TreeUtil.leftMost(root));
