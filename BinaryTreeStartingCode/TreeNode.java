@@ -32,7 +32,7 @@ public class TreeNode {
      * sets the value of node
      * @param val value to set
      */
-    public void setVal(Object val) {
+    public void setValue(Object val) {
       this.val = val;
     }
 
@@ -40,7 +40,7 @@ public class TreeNode {
      * gets the value of node
      * @return val value of node
      */
-    public Object getVal() {
+    public Object getValue() {
       return this.val;
     }
 
