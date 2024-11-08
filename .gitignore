@@ -4,3 +4,6 @@
 
 # DS STORE
 .DS_Store
+
+# IGNORE .TXT FILES
+*.txt
