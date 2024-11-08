@@ -185,7 +185,9 @@ public class TreeUtil  //method stubs /Skeleton code
    */
   public static void saveTree(String fileName, TreeNode t)
   {
-    throw new RuntimeException("Write ME!");
+    ArrayList<String> l = new ArrayList<String>();
+    fillList(t, l);
+    FileUtil.saveFile(fileName, l.iterator());
   }
   /**
    * buildTree takes in an iterator which will iterate through a valid description of
@@ -195,8 +197,17 @@ public class TreeUtil  //method stubs /Skeleton code
    */
   public static TreeNode buildTree(Iterator<String> it)
   {
-    throw new RuntimeException("Write ME!");
-
+    if (it.hasNext()) {
+      String curr = it.next();
+      if (curr.equals("$")) {
+        return null;
+      } else {
+        return new TreeNode(curr, buildTree(it), buildTree(it));
+      }
+    } else {
+      System.out.print("somehow got here");
+      return null;
+    }
   }
   /**
    * read a file description of a tree and then build the tree
@@ -205,7 +216,7 @@ public class TreeUtil  //method stubs /Skeleton code
    */
   public static TreeNode loadTree(String fileName)
   {
-    throw new RuntimeException("Write ME!");
+    return buildTree(FileUtil.loadFile(fileName));
   }
   /**
    * utility method that waits for a user to type text into Std Input and then press enter
