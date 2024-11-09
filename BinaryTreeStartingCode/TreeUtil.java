@@ -236,16 +236,36 @@ public class TreeUtil  //method stubs /Skeleton code
    */
   private static void twentyQuestionsRound(TreeNode t, TreeDisplay display)
   {    
-    throw new RuntimeException("Write ME!");
+    if (t.getLeft() == null && t.getRight() == null) {
+      System.out.println("then it is " + t.getValue() + "!\n\tNow you truly win!");
+    } else {
+      System.out.println("is it " + t.getLeft().getValue() + "?\n\tanswer y or n");
+      if (getUserInput().equals("y")) {
+        twentyQuestionsRound(t.getLeft(), display);
+      } else {
+        System.out.println("then is it " + t.getRight().getValue() + "?\n\tanswer y or n");
+        if (getUserInput().equals("y")) {
+          twentyQuestionsRound(t.getRight(), display);
+        } else {
+          throw new RuntimeException("aspodijaisfldkf nothign found");
+        }
+      }
+    }
   }
   /** 
    * plays a game of 20 questions
    * Begins by reading in a starting file and then plays multiple rounds
-   * until the user enters "quit".  Then the final tree is saved
+   * until the user enters "n".  Then the final tree is saved
    */
   public static void twentyQuestions()
   {
-    throw new RuntimeException("Write ME!");
+    System.out.println("\nplay a new round?\n\ty or n");
+    
+    while (getUserInput().equals("y")) {
+      TreeNode qtree = loadTree("TQT.txt");
+      twentyQuestionsRound(qtree, new TreeDisplay());
+      System.out.println("\nplay a new round?\n\ty or n");
+    }
   }
   /**
    * copy a binary tree
@@ -330,7 +350,7 @@ public class TreeUtil  //method stubs /Skeleton code
    * @param display is the display that will show progress as the method walks 
    *        down the tree
    */
-  private static void insertMorse(TreeNode decodingTree, String letter,
+  public static void insertMorse(TreeNode decodingTree, String letter,
       String code, TreeDisplay display)
   {
     int maxLen = code.length();
