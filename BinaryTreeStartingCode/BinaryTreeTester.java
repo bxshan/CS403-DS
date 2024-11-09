@@ -74,7 +74,7 @@ public class BinaryTreeTester
         TreeUtil util = new TreeUtil();
 
         TreeNode decodingTree = TreeUtil.createDecodingTree (display);
-        System.out.println ("The following should print 'sos', 'amerikuh', 'christmas' : ");
+        System.out.println ("\nThe following should print 'sos', 'amerikuh', 'christmas' : ");
 
         System.out.println ("\nLooks like we know our ABC's!\n");
 
@@ -193,6 +193,52 @@ public class BinaryTreeTester
             System.out.println ("\n\nSave to file and Load from file seem to work well.\n\nTake a look at both displays and confirm yourself.\n");
     }
 
+    public void twentyQuestionsTest() {
+      System.out.print ("\f");
+
+      TreeDisplay display = new TreeDisplay();
+
+      TreeNode qtree = new TreeNode("Twenty Questions Tree");
+
+      TreeUtil util = new TreeUtil();
+
+      display.setTester (this);
+      //display.displayTree(qtree);
+
+      // build questions tree
+      
+      // layer 1
+      TreeUtil.insertMorse(qtree, "animal", ".", display);
+      TreeUtil.insertMorse(qtree, "continent", "-", display);
+
+      //layer 2
+      TreeUtil.insertMorse(qtree, "common pet", "..", display);
+      TreeUtil.insertMorse(qtree, "animal living in water", ".-", display);
+
+      TreeUtil.insertMorse(qtree, "continent in the norhtern hemisphere", "-.", display);
+      TreeUtil.insertMorse(qtree, "smaller continent", "--", display);
+      
+      //layer 3
+      TreeUtil.insertMorse(qtree, "dog", "...", display);
+      TreeUtil.insertMorse(qtree, "fish", "..-", display);
+
+      TreeUtil.insertMorse(qtree, "shark", ".-.", display);
+      TreeUtil.insertMorse(qtree, "sea turtle", ".--", display);
+
+      TreeUtil.insertMorse(qtree, "North America", "-..", display);
+      TreeUtil.insertMorse(qtree, "Asia", "-.-", display);
+
+      TreeUtil.insertMorse(qtree, "Oceania", "--.", display);
+      TreeUtil.insertMorse(qtree, "Europe", "---", display);
+
+      //save to file 
+      TreeUtil.saveTree("TQT.txt", qtree);
+
+      //Test begin
+      System.out.println("\ntesting Twenty Questons Tree...\n");
+      TreeUtil.twentyQuestions();
+    }
+
     /**
      * Compiles all aspects of the tester in a menu-based system.
      */
@@ -213,13 +259,13 @@ public class BinaryTreeTester
                     System.out.println ("\fWelcome to the Binary Tree Tester.\n" + 
                         "This tests the implementation of the TreeUtil class.\n\n\n" +
                         "Enter \n1 to test basic tree methods, \n2 for morse code " + 
-                        "methods, \n3 to test Save and Read to and from a File, \n4 to quit.");
+                        "methods, \n3 to test Save and Read to and from a File, \n4 to test twenty questions, \n5 to quit.");
                 }
                 else
                 {
                     System.out.println ("\fInvalid input, please try again.\n\n" + 
                         "Enter \n1 to test basic tree methods, " + 
-                        "\n2 for morse code methods, \n3 to test Save and Read to and from a File, \n4 to quit.");
+                        "\n2 for morse code methods, \n3 to test Save and Read to and from a File, \n4 to test twenty questions, \n5 to quit.");
                 }
 
                 initial = in.nextLine();
@@ -238,8 +284,9 @@ public class BinaryTreeTester
             if (response == 1) {basicTest();}
             if (response == 2) {morseTest();}
             if (response == 3) {fileTest();}
-            if (response == 4) {System.out.print("\fYou win!"); System.exit(1);}
-            if (response != 1 && response != 2 && response != 3 && response !=4)
+            if (response == 4) {twentyQuestionsTest();}
+            if (response == 5) {System.out.print("\fYou win!"); System.exit(1);}
+            if (response != 1 && response != 2 && response != 3 && response != 4 && response != 5)
                 System.out.print ("\fInvalid input, please try again.");
             //System.out.print("\n\nEnter 1 to test basic tree methods, " +
             //                     "2 for morse code methods, 3 to quit.\n");
@@ -252,11 +299,11 @@ public class BinaryTreeTester
                 {
                     if (!alreadyHappened)
                         System.out.println ("\n\nEnter 1 to test basic tree methods, " + 
-                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to quit.");
+                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to test twenty questions, 5 to quit.");
                     else
                         System.out.println ("\fInvalid input, please try again.\n\n" + 
                             "Enter 1 to test basic tree methods, " + 
-                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to quit.");
+                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to test twenty questions, 5 to quit.");
                     initial = in.nextLine();
                     response = Integer.parseInt (initial);
                     notValidInput = false;
@@ -278,12 +325,14 @@ public class BinaryTreeTester
      */
     public void sendValue(Object value)
     {
-        System.out.print(value + " ");
+      // AUREDILSFHFI THIS PRINTING IS SO ANNOYING
+      //System.out.print(value + " ");
+      System.out.print(".");
     }
 
     public static void main (String [] args)
     {
-        BinaryTreeTester richard = new BinaryTreeTester();
-        richard.test();
+        BinaryTreeTester boxuan = new BinaryTreeTester();
+        boxuan.test();
     }
 }
