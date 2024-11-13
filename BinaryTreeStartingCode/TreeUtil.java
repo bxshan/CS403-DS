@@ -1,10 +1,8 @@
 import java.util.*;
 /**
- * TreeUtil contains the following methods for manipulating binary trees:
- * < put in your list of methods here>
- * @author 
- * @version
- *
+ * TreeUtil.java
+ * @author Boxuan Shan
+ * @version 11112024
  */ 
 public class TreeUtil  //method stubs /Skeleton code
 {
@@ -12,11 +10,10 @@ public class TreeUtil  //method stubs /Skeleton code
   private static Scanner in = new Scanner(System.in);
   private static final boolean debug = false;
 
-
   /**
    * leftmost returns the value in the leftmost node of the tree.  It is 
    * implemented recursively
-   * precondition:  t is non-empty
+   * @precondition t is non-empty
    * @param t is the tree whose leftmost node is to be found
    * @return the VALUE in the leftmost node of t.
    */
@@ -34,7 +31,7 @@ public class TreeUtil  //method stubs /Skeleton code
   /**
    * rightmost returns the value in the rightmost node of the tree.  It is 
    * implemented recursively
-   * precondition:  t is non-empty
+   * @precondition t is non-empty
    * @param t is the tree whose rightmost node is to be found
    * @return the VALUE in the rightmost node of t.
    */
@@ -112,7 +109,7 @@ public class TreeUtil  //method stubs /Skeleton code
    * up the nodes on the display as the traversal takes place
    * @param t the root of the tree to traverse
    * @param display the display that will show the traversal
-   * postcondition: each node in t has been lit up on display
+   * @postcondition each node in t has been lit up on display
    */
   public static void preOrder(TreeNode t, TreeDisplay display)
   {
@@ -129,7 +126,7 @@ public class TreeUtil  //method stubs /Skeleton code
    * up the nodes on the display as the traversal takes place
    * @param t the root of the tree to traverse
    * @param display the display that will show the traversal
-   * postcondition: each node in t has been lit up on display
+   * @postcondition each node in t has been lit up on display
    */
   public static void inOrder(TreeNode t, TreeDisplay display)
   {
@@ -146,7 +143,7 @@ public class TreeUtil  //method stubs /Skeleton code
    * up the nodes on the display as the traversal takes place
    * @param t the root of the tree to traverse
    * @param display the display that will show the traversal
-   * postcondition: each node in t has been lit up on display
+   * @postcondition each node in t has been lit up on display
    */
   public static void postOrder(TreeNode t, TreeDisplay display)
   {
@@ -206,6 +203,7 @@ public class TreeUtil  //method stubs /Skeleton code
       }
     } else {
       System.out.print("somehow got here");
+      System.out.print("\tadd $\n");
       return null;
     }
   }
@@ -228,9 +226,9 @@ public class TreeUtil  //method stubs /Skeleton code
   }
   /**
    * plays a single round of 20 questions
-   * postcondition:  plays a round of twenty questions, asking the user questions as it
-   *                 walks down the given knowledge tree, lighting up the display as it goes;
-   *                 modifies the tree to include information learned.
+   * @postcondition plays a round of twenty questions, asking the user questions as it
+   *                walks down the given knowledge tree, lighting up the display as it goes;
+   *                modifies the tree to include information learned.
    * @param t a pointer to the root of the game tree
    * @param display which will show the progress of the game
    */
@@ -255,7 +253,7 @@ public class TreeUtil  //method stubs /Skeleton code
   /** 
    * plays a game of 20 questions
    * Begins by reading in a starting file and then plays multiple rounds
-   * until the user enters "n".  Then the final tree is saved
+   * until the user enters "n". Then the final tree is saved
    */
   public static void twentyQuestions()
   {
@@ -340,9 +338,9 @@ public class TreeUtil  //method stubs /Skeleton code
   }
   /**
    * helper method for building a Morse code decoding tree.
-   * postcondition:  inserts the given letter into the decodingTree,
-   *                 in the appropriate position, as determined by
-   *                 the given Morse code sequence; lights up the display
+   * @postcondition inserts the given letter into the decodingTree,
+   *               in the appropriate position, as determined by
+   *               the given Morse code sequence; lights up the display
    *                 as it walks down the tree
    * @param decodingTree is the partial decoding tree
    * @param letter is the letter to add
@@ -372,6 +370,7 @@ public class TreeUtil  //method stubs /Skeleton code
         } else if (decodingTree.getLeft() != null && i == maxLen - 1) {
           decodingTree = decodingTree.getLeft();
           decodingTree.setValue(letter);
+          // exp = "2 + 3 * 2"
           continue;
         } else if (decodingTree.getLeft() != null && i != maxLen - 1) {
           decodingTree = decodingTree.getLeft();
@@ -434,17 +433,44 @@ public class TreeUtil  //method stubs /Skeleton code
   /**
    * optional work
    */
-  public static Number eval(TreeNode expTree, TreeDisplay display)
-  {
-    throw new RuntimeException("Write ME!");
-  }
+  //public static Number eval(TreeNode expTree, TreeDisplay display)
+  //{
+  //  throw new RuntimeException("Write ME!");
+  //}
   /**
    * optional work
    */
-  public static TreeNode createExpressionTree(String exp)
-  {
-    throw new RuntimeException("Write ME!");
-  }
+  // exp = "2 + 3 * 2"
+  //public static TreeNode createExpressionTree(String exp)
+  //{
+  //  ArrayList<String> expList = new ArrayList<String>();
+  //  exp += " ";
+  //  while (!exp.equals("")) {
+  //    String tmp = "";
+  //    while(!exp.substring(0, 1).equals(" ")) {
+  //      tmp += exp.substring(0, 1);
+  //      exp = exp.substring(1);
+  //    }
+  //    exp = exp.substring(1);
+  //    expList.add(tmp);
+  //  }
+
+  //  for (int i = 0; i < expList.size(); i++) {
+  //    if (expList.get(i).substring(0, 1).matches("1|2|3|4|5|6|7|8|9|0")) {
+  //      expList.add(i + 1, "$");
+  //      expList.add(i + 2, "$");
+  //      i += 2;
+  //    }
+  //  }
+
+  //  System.out.println("!!!----");
+  //  for (String e: expList) {
+  //    System.out.println(e);
+  //  }
+  //  System.out.println("!!!----");
+
+  //  return buildTree(expList.iterator());
+  //}
 
   //     /**
   //      * debug printout
@@ -457,4 +483,3 @@ public class TreeUtil  //method stubs /Skeleton code
   //         if(debug) System.out.println("debug: " + out);
   //     }
 }
-

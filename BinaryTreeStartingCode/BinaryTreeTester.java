@@ -193,6 +193,9 @@ public class BinaryTreeTester
             System.out.println ("\n\nSave to file and Load from file seem to work well.\n\nTake a look at both displays and confirm yourself.\n");
     }
 
+    /**
+     * Tests the TreeUtil methods to play the twenty questions game
+     */
     public void twentyQuestionsTest() {
       System.out.print ("\f");
 
@@ -203,7 +206,7 @@ public class BinaryTreeTester
       TreeUtil util = new TreeUtil();
 
       display.setTester (this);
-      //display.displayTree(qtree);
+      display.displayTree(qtree);
 
       // build questions tree
       
@@ -240,6 +243,23 @@ public class BinaryTreeTester
     }
 
     /**
+     * Tests the TreeUtil methods to evaluate an expressions tree
+     */
+    public void expTest() {
+      System.out.print ("\f");
+
+      TreeDisplay display = new TreeDisplay();
+
+      TreeUtil util = new TreeUtil();
+
+      //TreeNode expTree = util.createExpressionTree("+ 11 * 22 33");
+      //TreeNode expTree = util.createExpressionTree("11 + 22 * 33");
+
+      //display.setTester (this);
+      //display.displayTree(expTree);
+    }
+
+    /**
      * Compiles all aspects of the tester in a menu-based system.
      */
     public void test()
@@ -259,13 +279,13 @@ public class BinaryTreeTester
                     System.out.println ("\fWelcome to the Binary Tree Tester.\n" + 
                         "This tests the implementation of the TreeUtil class.\n\n\n" +
                         "Enter \n1 to test basic tree methods, \n2 for morse code " + 
-                        "methods, \n3 to test Save and Read to and from a File, \n4 to test twenty questions, \n5 to quit.");
+                        "methods, \n3 to test Save and Read to and from a File, \n4 to test twenty questions, \n5 to test exp, \n6 to quit.");
                 }
                 else
                 {
                     System.out.println ("\fInvalid input, please try again.\n\n" + 
                         "Enter \n1 to test basic tree methods, " + 
-                        "\n2 for morse code methods, \n3 to test Save and Read to and from a File, \n4 to test twenty questions, \n5 to quit.");
+                        "\n2 for morse code methods, \n3 to test Save and Read to and from a File, \n4 to test twenty questions, \n5 to test exp, \n6 to quit.");
                 }
 
                 initial = in.nextLine();
@@ -285,7 +305,8 @@ public class BinaryTreeTester
             if (response == 2) {morseTest();}
             if (response == 3) {fileTest();}
             if (response == 4) {twentyQuestionsTest();}
-            if (response == 5) {System.out.print("\fYou win!"); System.exit(1);}
+            if (response == 5) {expTest();}
+            if (response == 6) {System.out.print("\fYou win!"); System.exit(1);}
             if (response != 1 && response != 2 && response != 3 && response != 4 && response != 5)
                 System.out.print ("\fInvalid input, please try again.");
             //System.out.print("\n\nEnter 1 to test basic tree methods, " +
@@ -299,11 +320,11 @@ public class BinaryTreeTester
                 {
                     if (!alreadyHappened)
                         System.out.println ("\n\nEnter 1 to test basic tree methods, " + 
-                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to test twenty questions, 5 to quit.");
+                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to test twenty questions, 5 to test exp, 6 to quit.");
                     else
                         System.out.println ("\fInvalid input, please try again.\n\n" + 
                             "Enter 1 to test basic tree methods, " + 
-                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to test twenty questions, 5 to quit.");
+                            "2 for morse code methods, 3 to test Save and Read to and from a File, 4 to test twenty questions, 5 to test exp, 6 to quit.");
                     initial = in.nextLine();
                     response = Integer.parseInt (initial);
                     notValidInput = false;
@@ -330,6 +351,10 @@ public class BinaryTreeTester
       System.out.print(".");
     }
 
+    /**
+     * main function, creates a tester object, calls test()
+     * @param args cmd-line args
+     */
     public static void main (String [] args)
     {
         BinaryTreeTester boxuan = new BinaryTreeTester();
