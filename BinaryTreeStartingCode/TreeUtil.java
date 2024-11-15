@@ -432,14 +432,19 @@ public class TreeUtil  //method stubs /Skeleton code
   }
 
   /**
-   * optional work
+   * evaluates the result of an expression tree
+   * @param expTree the expression tree to evaluate
+   * @param display display to show exptree 
+   * @return result of the expression
    */
   public static Number eval(TreeNode expTree, TreeDisplay display)
   {
     return ExpUtil.eval(expTree);
   }
   /**
-   * optional work
+   * creates an expression tree from an expression
+   * @param exp the exp to turn into a tree
+   * @return the expression tree made
    */
   // exp = "2 + 3 * 2"
   public static TreeNode createExpressionTree(String exp)

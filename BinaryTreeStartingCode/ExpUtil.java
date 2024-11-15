@@ -1,6 +1,11 @@
 import java.util.*;
 
 public class ExpUtil {
+  /**
+   * returns an expression in postfix form, using a stack
+   * @param exp valid infix expression
+   * @return corresponding postfix expression
+   */
   public static String infixToPostfix(String exp) {
     Stack<String> mem = new Stack<String>();
     String retpf = "";
@@ -43,6 +48,11 @@ public class ExpUtil {
     return retpf;
   }
 
+  /**
+   * returns the next item in an expression
+   * @param exp valid expression
+   * @return first item in expression
+   */
   public static String takeNextItem(String exp) {
     String retpf = "";
     if (exp.substring(0, 1).equals("+") || exp.substring(0, 1).equals("-") || exp.substring(0, 1).equals("*") ||
@@ -60,6 +70,11 @@ public class ExpUtil {
     return retpf;
   }
 
+  /**
+   * removes the next item in an expression
+   * @param exp valid expression
+   * @return expression with first item removed
+   */
   public static String removeNextItem(String exp) {
     if (exp.substring(0, 1).equals("+") || exp.substring(0, 1).equals("-") || exp.substring(0, 1).equals("*") ||
          exp.substring(0, 1).equals("/") || exp.substring(0, 1).equals("%")) {
@@ -74,11 +89,21 @@ public class ExpUtil {
     return exp;
   }
 
+  /**
+   * returns whether a string is an operator
+   * @param exp expression to check 
+   * @return true if the expression is an operator
+   */
   public static boolean isOp(String exp) {
     return exp.equals("+") || exp.equals("-") || exp.equals("*") || 
       exp.equals("/") || exp.equals("%"); 
   }
 
+  /**
+   * it worked!
+   * @param exp the expression to convert to a tree
+   * @return corresponding tree
+   */
   public static TreeNode ihopethisworks(String exp) {
     ArrayList<String> ops = new ArrayList<String>();
     ArrayList<String> nums = new ArrayList<String>();
@@ -127,6 +152,18 @@ public class ExpUtil {
     }
 
     return ROOT;
+  }
+
+  /**
+   * evaluates a binary tree representing an expression
+   * @param t root of tree to evaluate
+   * @return value of the exptree
+   */
+  public static int eval(TreeNode t) {
+    String postfix = "";
+    postfix = getPO(t);
+    System.out.println("---" + postfix);
+    return evalPostfix(postfix);
   }
 
   /**
@@ -185,21 +222,18 @@ public class ExpUtil {
     return (int) mem.peek();
   }
 
-  public static int eval(TreeNode t) {
-    String postfix = "";
-    postfix = getPO(t);
-    System.out.println("---" + postfix);
-    return evalPostfix(postfix);
-  }
+  /**
+   * main method
+   * @param args cmd-line args
+   */
+  //public static void main(String[] args) {
+  //  String in = "11 + 22 * 33";
 
-  public static void main(String[] args) {
-    String in = "11 + 22 * 33";
+  //  TreeNode expTree = ihopethisworks(in);
 
-    TreeNode expTree = ihopethisworks(in);
+  //  TreeDisplay display = new TreeDisplay();
+  //  display.displayTree(expTree);
 
-    TreeDisplay display = new TreeDisplay();
-    display.displayTree(expTree);
-
-    System.out.println("eval res " + eval(expTree));
-  }
+  //  System.out.println("eval res " + eval(expTree));
+  //}
 }
