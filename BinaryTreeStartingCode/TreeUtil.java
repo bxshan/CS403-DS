@@ -430,47 +430,22 @@ public class TreeUtil  //method stubs /Skeleton code
 
     return ret;
   }
+
   /**
    * optional work
    */
-  //public static Number eval(TreeNode expTree, TreeDisplay display)
-  //{
-  //  throw new RuntimeException("Write ME!");
-  //}
+  public static Number eval(TreeNode expTree, TreeDisplay display)
+  {
+    return ExpUtil.eval(expTree);
+  }
   /**
    * optional work
    */
   // exp = "2 + 3 * 2"
-  //public static TreeNode createExpressionTree(String exp)
-  //{
-  //  ArrayList<String> expList = new ArrayList<String>();
-  //  exp += " ";
-  //  while (!exp.equals("")) {
-  //    String tmp = "";
-  //    while(!exp.substring(0, 1).equals(" ")) {
-  //      tmp += exp.substring(0, 1);
-  //      exp = exp.substring(1);
-  //    }
-  //    exp = exp.substring(1);
-  //    expList.add(tmp);
-  //  }
-
-  //  for (int i = 0; i < expList.size(); i++) {
-  //    if (expList.get(i).substring(0, 1).matches("1|2|3|4|5|6|7|8|9|0")) {
-  //      expList.add(i + 1, "$");
-  //      expList.add(i + 2, "$");
-  //      i += 2;
-  //    }
-  //  }
-
-  //  System.out.println("!!!----");
-  //  for (String e: expList) {
-  //    System.out.println(e);
-  //  }
-  //  System.out.println("!!!----");
-
-  //  return buildTree(expList.iterator());
-  //}
+  public static TreeNode createExpressionTree(String exp)
+  {
+    return ExpUtil.ihopethisworks(exp);
+  }
 
   //     /**
   //      * debug printout

@@ -253,10 +253,14 @@ public class BinaryTreeTester
       TreeUtil util = new TreeUtil();
 
       //TreeNode expTree = util.createExpressionTree("+ 11 * 22 33");
-      //TreeNode expTree = util.createExpressionTree("11 + 22 * 33");
+      TreeNode expTree = util.createExpressionTree("11 + 22 * 33");
+      //TreeNode expTree = util.createExpressionTree("11 22 33 * +");
 
-      //display.setTester (this);
-      //display.displayTree(expTree);
+      display.setTester (this);
+      display.displayTree(expTree);
+
+      System.out.println("\n\nEvaluating expression tree...\n");
+      System.out.println("got\t" + util.eval(expTree, display));
     }
 
     /**
