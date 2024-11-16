@@ -9,6 +9,9 @@ import java.util.Scanner;
  * 
  * @author Nathan Dalal
  * @version 11/13/13
+ *
+ * @author Boxuan Shan
+ * @version 11152024
  */
 public class BinaryTreeTester
 {
