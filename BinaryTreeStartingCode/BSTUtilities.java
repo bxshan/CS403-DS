@@ -86,4 +86,48 @@ public abstract class BSTUtilities
 
     return t;
 	}
+
+  public static int countNodesInRange(TreeNode t, int l, int h) {
+    if (t == null) {
+      return 0;
+    }
+
+    int v = (int) t.getValue();
+
+    if (v < l) {
+      return countNodesInRange(t.getRight(), l, h);
+    } else if (v > h) {
+      return countNodesInRange(t.getLeft(), l, h);
+    } else {
+      return 1 + countNodesInRange(t.getLeft(), l, h) + countNodesInRange(t.getRight(), l, h);
+    }
+  }
+
+  //private static boolean BSTl(TreeNode t, int v) {
+  //  return;
+  //}
+
+  public static boolean isValidBST(TreeNode t) {
+    if (t == null || t.getLeft() == null && t.getRight() == null) {
+      return true;
+    } else {
+      return BSTHelper(t.getLeft(), (int) t.getValue(), 0) && BSTHelper(t.getRight(), (int) t.getValue(), 1);
+    }
+  }
+  
+  public static boolean BSTHelper(TreeNode t, int c, int d) {
+    if (t == null) {
+      return true;
+    }
+    if (t.getLeft() == null && t.getRight() == null) {
+      int v = (int) t.getValue();
+      if (d == 0) {
+        return v < c; 
+      } else {
+        return v > c; 
+      }
+    }
+
+    return BSTHelper(t.getLeft(), c, d) && BSTHelper(t.getRight(), c, d);
+  }
 }

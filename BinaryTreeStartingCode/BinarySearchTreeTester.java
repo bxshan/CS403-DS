@@ -26,24 +26,31 @@ public class BinarySearchTreeTester extends BinaryTreeTester
         TreeNode t = null;
 
 
-        t = BSTUtilities.insert(t,x,display);
-        x = 10;
-        t = BSTUtilities.insert(t,x,display);
-        x = 2;
-        t = BSTUtilities.insert(t,x,display);
-        x = 4;
-        t = BSTUtilities.insert(t,x,display);
-        x = 14;
-        t = BSTUtilities.insert(t,x,display);
-        x = 7;
-        t = BSTUtilities.insert(t,x,display);
-        // added 
-        x = 9;
-        t = BSTUtilities.insert(t,x,display);
-        
-        display.displayTree(t);
+        //t = BSTUtilities.insert(t,x,display);
+        //x = 10;
+        //t = BSTUtilities.insert(t,x,display);
+        //x = 2;
+        //t = BSTUtilities.insert(t,x,display);
+        //x = 4;
+        //t = BSTUtilities.insert(t,x,display);
+        //x = 14;
+        //t = BSTUtilities.insert(t,x,display);
+        //x = 7;
+        //t = BSTUtilities.insert(t,x,display);
+        //x = 9;
+        //t = BSTUtilities.insert(t,x,display);
+        //display.displayTree(t);
 
-        //System.out.println("The tree is a BST ? " + BSTUtilities.checkBST(t, display));
+        t = new TreeNode(10);
+        t = BSTUtilities.insert(t,8,display);
+        t = BSTUtilities.insert(t,13,display);
+        t = BSTUtilities.insert(t,7,display);
+        t = BSTUtilities.insert(t,12,display);
+        display.displayTree(t);
+        t.getLeft().setRight(new TreeNode(14));
+        System.out.println("\n\n\tnodes in range 2, 5 inclusive: " + BSTUtilities.countNodesInRange(t, 2, 5));
+        System.out.println("\n\n\tis BST: " + BSTUtilities.isValidBST(t));
+
         Scanner sc = new Scanner(System.in);
         System.out.println("Continue?[Y/N] ... Press Y to insert and N to commence delete ");
         while (sc.hasNext() && (sc.nextLine().equalsIgnoreCase("y")))
@@ -93,7 +100,7 @@ public class BinarySearchTreeTester extends BinaryTreeTester
 
 	public static void main(String[] args)
 	{
-		BinarySearchTreeTester myStudents = new BinarySearchTreeTester();
+		BinarySearchTreeTester boxuan = new BinarySearchTreeTester();
 		System.out.println("Thank you!!!");		
 	}
 }
