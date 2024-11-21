@@ -1,10 +1,26 @@
-//a collection of static methods for operating on binary search trees
+/**
+ * BSTUtilities.java
+ * @author Boxuan Shan
+ * @version 11202024
+ */
 public abstract class BSTUtilities
 {
+  /**
+   * Checks if a value of x should go left for a treenode t
+   * @param t treenode to check
+   * @param x value to compare
+   * @return true if should left 
+   */
   private static boolean mvL(TreeNode t, Comparable x) {
     return x.compareTo(t.getValue()) < 0;
   }
 
+  /**
+   * Checks if a value of x should go right for a treenode t
+   * @param t treenode to check
+   * @param x value to compare
+   * @return true if should go right 
+   */
   private static boolean mvR(TreeNode t, Comparable x) {
     return x.compareTo(t.getValue()) > 0;
   }
@@ -87,6 +103,13 @@ public abstract class BSTUtilities
     return t;
 	}
 
+  /**
+   * counts how many nodes are in a given range
+   * @param t BST to count
+   * @param l lower bound
+   * @param h upper bound
+   * @return number of nodes in [l, h]
+   */
   public static int countNodesInRange(TreeNode t, int l, int h) {
     if (t == null) {
       return 0;
@@ -103,10 +126,11 @@ public abstract class BSTUtilities
     }
   }
 
-  //private static boolean BSTl(TreeNode t, int v) {
-  //  return;
-  //}
-
+  /**
+   * Checks if given tree is a valid BST
+   * @param t tree to check
+   * @return true if t is a valid BST
+   */
   public static boolean isValidBST(TreeNode t) {
     if (t == null || t.getLeft() == null && t.getRight() == null) {
       return true;
@@ -115,6 +139,12 @@ public abstract class BSTUtilities
     }
   }
   
+  /**
+   * Helper method for isValidBST, checks if a given subtree has nodes all smaller or bigger than a given value
+   * @param t subtree to check
+   * @param c number to compare to
+   * @param d whether to check for greater than (0) or less than (1)
+   */
   public static boolean BSTHelper(TreeNode t, int c, int d) {
     if (t == null) {
       return true;
