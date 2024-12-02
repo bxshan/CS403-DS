@@ -25,9 +25,15 @@ public abstract class BSTUtilities
     return x.compareTo(t.getValue()) > 0;
   }
 
-	//precondition:  t is a binary search tree in ascending order
-	//postcondition: returns true if t contains the value x;
-	//               otherwise, returns false
+  /**
+   * Checks if a given BST contains a value
+   * @param t treenode to check
+   * @param x value to check
+   * @param display display to use
+   * @precondition t is a binary search tree in ascending order
+   * @postcondition returns true if t contains the value x; otherwise, returns false
+   * @returns true if t contains the value x; otherwise, returns false
+   */
 	public static boolean contains(TreeNode t, Comparable x, TreeDisplay display)
 	{
     if (t == null) {
@@ -43,13 +49,20 @@ public abstract class BSTUtilities
 
 
 
-	//precondition:  t is a binary search tree in ascending order
-	//postcondition: if t is empty, returns a new tree containing x;
-	//               otherwise, returns t, with x having been inserted
-	//               at the appropriate position to maintain the binary
-	//               search tree property; x is ignored if it is a
-	//               duplicate of an element already in t; only one new
-	//               TreeNode is created in the course of the traversal
+  /**
+   * inserts a value into a BST
+   * @param t treenode to insert 
+   * @param x value to insert 
+   * @param display display to use
+   * @precondition  t is a binary search tree in ascending order
+   * @postcondition if t is empty, returns a new tree containing x;
+   *               otherwise, returns t, with x having been inserted
+   *               at the appropriate position to maintain the binary
+   *               search tree property; x is ignored if it is a
+   *               duplicate of an element already in t; only one new
+   *               TreeNode is created in the course of the traversal
+   * @returns treenode with inserted value 
+   */
 	public static TreeNode insert(TreeNode t, Comparable x, TreeDisplay display)
 	{
     if (t == null) {
@@ -65,10 +78,16 @@ public abstract class BSTUtilities
     return t;
   }
 
-	//precondition:  t is a binary search tree in ascending order
-	//postcondition: returns a pointer to a binary search tree,
-	//               in which the value at node t has been deleted
-	//               (and no new TreeNodes have been created)
+  /**
+   * deletes a node in a BST
+   * @param t treenode to delete
+   * @param display display to use
+   * precondition t is a binary search tree in ascending order
+   * postcondition returns a pointer to a binary search tree,
+   *               in which the value at node t has been deleted
+   *               (and no new TreeNodes have been created)
+   * @returns treenode with deleted value 
+   */
 	private static TreeNode deleteNode(TreeNode t, TreeDisplay display)
   {
     int s = (int) TreeUtil.leftmost(t.getRight()); // get inorder successor 
@@ -76,10 +95,17 @@ public abstract class BSTUtilities
     return delete(t.getRight(), (Comparable) s, display);
   }
 
-	//precondition:  t is a binary search tree in ascending order
-	//postcondition: returns a pointer to a binary search tree,
-	//               in which the value x has been deleted (if present)
-	//               (and no new TreeNodes have been created)
+  /**
+   * deletes a value in a BST
+   * @param t treenode to delete from
+   * @param x value to delete
+   * @param display display to use
+   * @precondition t is a binary search tree in ascending order
+   * @postcondition returns a pointer to a binary search tree,
+   *               in which the value x has been deleted (if present)
+   *               (and no new TreeNodes have been created)
+   * @returns treenode with deleted value 
+   */
 	public static TreeNode delete(TreeNode t, Comparable x, TreeDisplay display)
 	{
     if (t == null) {
