@@ -42,12 +42,14 @@ public class BinarySearchTreeTester extends BinaryTreeTester
         //display.displayTree(t);
 
         t = new TreeNode(10);
-        t = BSTUtilities.insert(t,8,display);
-        t = BSTUtilities.insert(t,13,display);
-        t = BSTUtilities.insert(t,7,display);
-        t = BSTUtilities.insert(t,12,display);
+        t = BSTUtilities.insert(t,41,display);
+        t = BSTUtilities.insert(t,51,display);
+        t = BSTUtilities.insert(t,49,display);
+        t = BSTUtilities.insert(t,57,display);
+        t = BSTUtilities.insert(t,64,display);
+        t = BSTUtilities.insert(t,55,display);
         display.displayTree(t);
-        t.getLeft().setRight(new TreeNode(14));
+        //t.getLeft().setRight(new TreeNode(14));
         System.out.println("\n\n\tnodes in range 2, 5 inclusive: " + BSTUtilities.countNodesInRange(t, 2, 5));
         System.out.println("\n\n\tis BST: " + BSTUtilities.isValidBST(t));
 
@@ -78,7 +80,7 @@ public class BinarySearchTreeTester extends BinaryTreeTester
                 int newNum = Integer.parseInt(sc.nextLine());
                 System.out.println("Input was " + newNum);
                 x = newNum;
-                BSTUtilities.delete(t, x, display);
+                t = BSTUtilities.delete(t, x, display);
                 display.displayTree(t);
             }   
             
