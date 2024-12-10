@@ -103,7 +103,7 @@ public class HeapUtil {
    * @param item item to insert
    * @return heap in the form of an array
    */
-  public Comparable[] insert(Comparable[] h, Comparable i) {
+  public Comparable[] insert(Comparable[] h, Comparable n) {
     heapSize++;
     if (heapSize >= h.length) {
       Comparable[] hnew = new Comparable[h.length*2];
@@ -112,7 +112,7 @@ public class HeapUtil {
       }
       h = hnew;
     }
-    h[heapSize] = i;
+    h[heapSize] = n;
     //heapifyUp(h, heapSize);
     buildHeap(h);
     return h;
