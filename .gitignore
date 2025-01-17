@@ -7,3 +7,6 @@
 
 # IGNORE .TXT FILES
 *.txt
+
+# ignore my bash scripts 
+readmeupdate
