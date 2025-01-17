@@ -2,28 +2,22 @@
 
 ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last 3 commits:
 
-<div>
-  <code>commit 44fca2d:</code>
-  <code>
-    <span style="text-decoration: underline">Update README with last commit message</span>
-  </code>
-  <code> at 2025-01-17 15:32:19 -0800</code>
-</div>
+```
+commit dbe9df4
+  Update README with last commit message
+  at 2025-01-17 15:33:35 -0800
+```
 
 
-<div>
-  <code>commit c38f00d:</code>
-  <code>
-    <span style="text-decoration: underline">Update README with last commit message</span>
-  </code>
-  <code> at 2025-01-17 15:26:23 -0800</code>
-</div>
+```
+commit 44fca2d
+  Update README with last commit message
+  at 2025-01-17 15:32:19 -0800
+```
 
 
-<div>
-  <code>commit b6f1afe:</code>
-  <code>
-    <span style="text-decoration: underline">ok normal methods are working but iterator of MyHashSet is broken</span>
-  </code>
-  <code> at 2025-01-17 12:42:34 -0800</code>
-</div>
+```
+commit c38f00d
+  Update README with last commit message
+  at 2025-01-17 15:26:23 -0800
+```
