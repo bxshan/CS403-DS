@@ -106,7 +106,7 @@ public class HeapUtil {
   public Comparable[] insert(Comparable[] h, Comparable n) {
     heapSize++;
     if (heapSize >= h.length) {
-      Comparable[] hnew = new Comparable[h.length*2];
+      Comparable hnew[] = new Comparable[h.length*2];
       for (int i = 0; i < h.length; i++) {
         hnew[i] = h[i];
       }
