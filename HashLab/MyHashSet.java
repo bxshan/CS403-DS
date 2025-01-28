@@ -1,14 +1,18 @@
 import java.util.*;
 /**
-* comment this class completely, and in accordance with the style guide.
-*/
-
+ * MyHashSet.java
+ * @author Boxuan Shan
+ * @version 01272025
+ */
 public class MyHashSet<E>
 {
 	private static final int NUM_BUCKETS = 5;
 	private LinkedList<E>[] buckets;
 	private int size;
 
+  /**
+   * constructor for MyHashSet  
+   */
 	public MyHashSet()
 	{
 		buckets = new LinkedList[NUM_BUCKETS];
@@ -17,20 +21,32 @@ public class MyHashSet<E>
     for (int i = 0; i < NUM_BUCKETS; i++) {
       buckets[i] = new LinkedList<E>();
     }
-		//MISSING CODE
 	}
 
-	//returns the index of the bucket where obj might be found
+  /**
+   * returns the index of the bucket where obj might be found
+   * @param obj the object to find the bucket index for
+   * @return the bucket index for that object
+   */
 	private int toBucketIndex(Object obj)
 	{
     return Math.abs(obj.hashCode()) % NUM_BUCKETS;
 	}
 
+  /**
+   * returns the number of elements in this set
+   * @return the number of elements in this set
+   */
 	public int size()
 	{
 		return size;
 	}
 
+  /**
+   * returns whether the set contains obj
+   * @param obj the object to find in the set
+   * @return true if the set contains obj
+   */
 	public boolean contains(Object obj)
 	{
     int index = toBucketIndex(obj);
@@ -43,8 +59,12 @@ public class MyHashSet<E>
     return false;
 	}
 
-	// if obj is not present in this set, adds obj and
-	// returns true; otherwise returns false
+  /**
+   * if obj is not present in this set, adds obj and
+   * returns true; otherwise returns false
+   * @param obj the object to add to the set
+   * @return true if modification was made
+   */
 	public boolean add(E obj)
 	{
     int index = toBucketIndex(obj);
@@ -59,8 +79,12 @@ public class MyHashSet<E>
     return true;
 	}
 
-	// if obj is present in this set, removes obj and
-	// returns true; otherwise returns false
+  /**
+   * if obj is present in this set, removes obj and
+   * returns true; otherwise returns false
+   * @param obj the object to remove from the set
+   * @return true if modification was made
+   */
 	public boolean remove(Object obj)
 	{
     int index = toBucketIndex(obj);
@@ -75,6 +99,10 @@ public class MyHashSet<E>
     return false;
 	}
 
+  /**
+   * returns a string representation of this set
+   * @return a string representation of this set
+   */
 	public String toString()
 	{
 		String s = "";
@@ -84,11 +112,17 @@ public class MyHashSet<E>
 		return s;
 	}
 
-
+  /**
+   * returns an iterator over the elements in this set
+   * @return an iterator over the elements in this set
+   */
   public Iterator<E> iterator() {
     return new MyHashSetIterator();
   }
 
+  /**
+   * private class for the iterator
+   */
   private class MyHashSetIterator implements Iterator<E> {
     private ListIterator <E> it;
     int bucketN;
@@ -100,8 +134,7 @@ public class MyHashSet<E>
     }
 
     /**
-     * @postcondition returns true if there are more elements
-     *                to return
+     * @return returns true if there are more elements to return
      */
     @Override
     public boolean hasNext() {
@@ -109,7 +142,7 @@ public class MyHashSet<E>
     }
 
     /**
-     * @postcondition returns the next element in the iteration
+     * @return returns the next element in the iteration
      */
     @Override
     public E next() {
@@ -129,7 +162,9 @@ public class MyHashSet<E>
       throw new RuntimeException("how did i get here");
     }
 
-    // @postcondition removes the last element that was returned by next
+    /**
+     * removes the last element returned by next
+     */
     @Override
     public void remove() {
       MyHashSet.this.remove(lastRet);
