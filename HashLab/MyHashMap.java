@@ -2,6 +2,8 @@ import java.util.*;
 /**
  * MyHashMap.java
  * MyHashMap acts like a map.
+ *
+ * may contain excessive checks for null
  * 
  * @author Boxuan Shan
  * @version 01272025
