@@ -18,13 +18,13 @@ public class SearchUtilTester {
       System.out.print(i + " ");
     }
     
-    System.out.print("\n\ntesting linear sort\n");
-    for(int i = 0; i < a.length; i++) {
+    System.out.print("\n\ntesting linear search\n");
+    for(int i = 0; i < a.length+1; i++) {
       System.out.print("found " + i + " @ " + SearchUtil.linearSearch(a, i) + "\n");
     }
 
-    System.out.print("\ntesting binary sort\n");
-    for(int i = 0; i < a.length; i++) {
+    System.out.print("\ntesting binary search\n");
+    for(int i = 0; i < a.length+1; i++) {
       System.out.print("found " + i + " @ " + SearchUtil.binarySearch(a, i) + "\n");
     }
   }
