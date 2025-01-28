@@ -3,21 +3,21 @@
 ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last 3 commits:
 
 ```
-commit dbe9df4
-  Update README with last commit message
-  at 2025-01-17 15:33:35 -0800
+commit e3280c1
+  +MyHashMap
+  at 2025-01-27 16:25:46 -0800
 ```
 
 
 ```
-commit 44fca2d
-  Update README with last commit message
-  at 2025-01-17 15:32:19 -0800
+commit 289b8b9
+  +javadocs finally
+  at 2025-01-27 16:18:41 -0800
 ```
 
 
 ```
-commit c38f00d
-  Update README with last commit message
-  at 2025-01-17 15:26:23 -0800
+commit 1460bbf
+  revise gitignore
+  at 2025-01-17 15:49:17 -0800
 ```
