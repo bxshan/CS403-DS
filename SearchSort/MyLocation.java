@@ -1,5 +1,8 @@
 /**
- * Write a complete class description of  MyLocation  here.
+ * MyLocation.java
+ *
+ * @author Boxuan Shan
+ * @version 02072025
  */
 public class MyLocation implements Comparable
 {
@@ -22,24 +25,25 @@ public class MyLocation implements Comparable
   }
 
   /**
-   * Method: getRow()
-   * Usage: 
+   * row getter
+   * @return row
    */
   public int getRow() {
     return this.row;
   }
 
   /**
-   * Method: getCol()
-   * Usage: 
+   * column getter
+   * @return column
    */
   public int getCol() {
     return this.col;
   }
 
   /**
-   * Method: equals()
-   * Usage: 
+   * determines equality to another location
+   * @param other location to check equality
+   * @return true if this object is equal to other
    */
   public boolean equals(Object other)
   {
@@ -48,8 +52,8 @@ public class MyLocation implements Comparable
   }
 
   /**
-   * Method: toString()
-   * Usage: 
+   * returns string representation of this location
+   * @return string representation of this location
    */
   public String toString()
   {
@@ -57,8 +61,10 @@ public class MyLocation implements Comparable
   }
 
   /**
-   * Method: compareTo()
-   * Usage: 
+   * compareTo override
+   * compares by row first, then col
+   * @param in location to compare
+   * @return int > 0 if object is larger, < 0 if object is smaller, 0 otherwise
    */
   public int compareTo(Object in)
   {
