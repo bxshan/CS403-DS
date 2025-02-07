@@ -26,7 +26,7 @@ public class SearchUtil {
   /**
    * performs a binary search
    * best case complexity O(1)
-   * worst case complexity O(log(n)
+   * worst case complexity O(log(n))
    * @param a array to search in
    * @param x element to find
    * @return index of element x
