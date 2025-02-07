@@ -26,8 +26,9 @@ public class Rectangle
 		return length + "x" + width;
 	}
   
-  public boolean equals(Rectangle obj) {
-    return obj.getWidth() == this.width && obj.getLength() == this.length;
+  public boolean equals(Object obj) {
+    Rectangle o = (Rectangle) obj;
+    return o.getWidth() == this.width && o.getLength() == this.length;
   }
 
   public int hashCode() {

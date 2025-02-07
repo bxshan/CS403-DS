@@ -138,7 +138,11 @@ public class MyHashSet<E>
      */
     @Override
     public boolean hasNext() {
-      return bucketN < NUM_BUCKETS-1 && it.hasNext();
+      while (!it.hasNext() && bucketN < NUM_BUCKETS) {
+        it = buckets[bucketN].listIterator();
+        bucketN++;
+      }
+      return it.hasNext();
     }
 
     /**
@@ -156,8 +160,10 @@ public class MyHashSet<E>
         //if (bucketN == NUM_BUCKETS) {
         //  throw new NoSuchElementException();
         //}
-        it = buckets[bucketN].listIterator();
-        next();
+        if (bucketN < NUM_BUCKETS) {
+          it = buckets[bucketN].listIterator();
+          next();
+        }
       }
       throw new RuntimeException("how did i get here");
     }
