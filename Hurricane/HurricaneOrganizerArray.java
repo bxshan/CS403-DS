@@ -9,15 +9,17 @@ import java.util.*;
  * 2018 data came from https://en.wikipedia.org/wiki/2018_Atlantic_hurricane_season.
  *
  * @author Susan King 
+ * @author Boxuan Shan
  * @version January 17, 2019
  * @version February 10, 2020 Polished code via variable names
+ * @version 02072025
  */
 public class HurricaneOrganizerArray
 {
     private Hurricane [] hurricanes;
-
     /**
-     * Comment this constructor even though you did not write it.
+     * constructor for a HurricaneOrganizerArray 
+     * reads an input file
      * 
      * @throws IOException  if file with the hurricane information cannot be found
      */
@@ -27,9 +29,11 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method even though you did not write it.
+     * returns the length of a file given filename
      * 
      * @throws IOException  if file with the hurricane information cannot be found
+     * @param name of file
+     * @return the length of a file given filename
      */
     private static int determineFileLength(String filename) throws IOException
     {
@@ -46,7 +50,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method even though you did not write it.
+     * constructor helper method to read input file
+     * @param name of input file
      */
     public void readFile(String filename) throws IOException
     {
@@ -76,7 +81,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method.
+     * returns max wind speed in current hurricane array
+     * @return max wind speed in current hurricane array
      */
     public int findMaxWindSpeed( )
     {
@@ -88,7 +94,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method.
+     * returns max pressure in current hurricane array
+     * @return max pressure in current hurricane array
      */
     public int findMaxPressure( )
     {
@@ -100,7 +107,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method.
+     * returns min wind speed in current hurricane array
+     * @return min wind speed in current hurricane array
      */
     public int findMinWindSpeed( )
     {
@@ -112,7 +120,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method.
+     * returns min pressure in current hurricane array
+     * @return min pressure in current hurricane array
      */
     public int findMinPressure( )
     {
@@ -124,7 +133,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method.
+     * returns average wind speed in current hurricane array
+     * @return average wind speed in current hurricane array
      */
     public double calculateAverageWindSpeed( )
     {
@@ -136,7 +146,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method.
+     * returns average pressure in current hurricane array
+     * @return average pressure in current hurricane array
      */
     public double calculateAveragePressure( )
     {
@@ -148,7 +159,8 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method.
+     * returns average category in current hurricane array
+     * @return average category in current hurricane array
      */
     public double calculateAverageCategory( )
     {
@@ -159,12 +171,27 @@ public class HurricaneOrganizerArray
       return sum / hurricanes.length;
     }
 
+    /**
+     * generic swap method for an array or Hurricane objects
+     * @param a array to swap in
+     * @param ii first index to swap
+     * @param jj second index to swap
+     */
     public void swp(Hurricane[] a, int ii, int jj) {
       Hurricane tmp = a[jj];
       a[jj] = a[ii];
       a[ii] = tmp;
     }
 
+    /**
+     * finds the index of min or max of some aspect of a Hurricane in an array of Hurricane objects in some range
+     * @param a array to find in
+     * @param startIndex index to start looking at
+     * @param endIndex index to stop looking at
+     * @param type aspect of Hurricane to look at: 0 for year, 1 for category
+     * @param whichOrder false to find min, true to find max
+     * @return see description
+     */
     public int indexOfMin(Hurricane[] a, int startIndex, int endIndex, int type, boolean whichOrder)
     {
       int minI = startIndex;
@@ -192,8 +219,7 @@ public class HurricaneOrganizerArray
 
 
     /**
-     * Sorts ascending based upon the hurricanes' years,
-     * The algorithm is selection sort.
+     * ascending selection sort of Hurricane object based on years
      */
     public void sortYears()
     {
@@ -207,6 +233,11 @@ public class HurricaneOrganizerArray
       }
     }
 
+    /**
+     * inserts the value at nextIndex+1 into the sorted subarray [0, nextIndex] in a given array
+     * @param a array to modify
+     * @param nextIndex what to insert
+     */
     public void insert(Hurricane[] a, int nextIndex) {
       int ii = nextIndex - 1;
       int jj = nextIndex;
@@ -219,8 +250,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Lexicographically sorts hurricanes based on the hurricanes' name, 
-     * using insertion sort.
+     * lexicographical insertion sort of Hurricane objects based on their names 
      */
     public void sortNames()
     {
@@ -232,8 +262,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Sorts descending based upon the hurricanes' categories,
-     * using selection sort.
+     * descending selection sort of Hurricane objects based on their categories
      */
     public void sortCategories()
     {
@@ -248,7 +277,7 @@ public class HurricaneOrganizerArray
     }  
 
     /**
-     * Sorts descending based upon pressures using a non-recursive merge sort.
+     * descending non-recursive merge sort of Hurricane objects based on their pressures
      */
     public void sortPressures()
     {
@@ -262,8 +291,7 @@ public class HurricaneOrganizerArray
     }
     
     /**
-     * Sorts descending a portion of array based upon pressure, 
-     * using selection sort.
+     * descending selection sort of a section of Hurricane objects based on their pressures
      * 
      * @param   start   the first index to start the sort
      * @param   end     one past the last index to sort; hence, end position
@@ -282,7 +310,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Sorts ascending based upon wind speeds using a recursive merge sort. 
+     * ascending recursive merge sort of Hurricane objects based on their speeds
      */
     public void sortWindSpeeds(int l, int r)
     {
@@ -470,7 +498,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method even though you did not write it.
+     * prints header of ui table
      */
     public void printHeader()
     {
@@ -480,7 +508,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment this method even though you did not write it.
+     * lazy method
      */
     public void printHurricanes()
     {
@@ -488,7 +516,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Add comments here even though you did not write the method.
+     * prints out hurricanes array
      */
     public void printHurricanes(Hurricane [] hurs)
     {
@@ -505,7 +533,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Add comments here even though you did not write the method.
+     * prints out ui menu
      */
     public void printMenu()
     {
@@ -524,7 +552,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Add comments here even though you did not write the method.
+     * prints out maxes and mins
      */
     public void printMaxAndMin( )
     {
@@ -539,7 +567,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Add comments here even though you did not write the method.
+     * prints out averages
      */
     public void printAverages( )
     {
@@ -552,7 +580,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Add comments here even though you did not write the method.
+     * does just what it says
      */
     public boolean interactWithUser( )
     {
@@ -620,7 +648,7 @@ public class HurricaneOrganizerArray
     }
 
     /**
-     * Comment the method even though you did not write it.
+     * main method yay
      * 
      * @param args  user's information from the command line
      * 

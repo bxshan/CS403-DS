@@ -1,11 +1,13 @@
 import java.io.*;
-
 /**
+ * Hurricane.java
  * Models hurricane information, including categories.  
  * Works with HurricaneOrganizer, provides object and comparison skeletons.
  * 
  * @author Susan King
+ * @author Boxuan Shan
  * @version January 17, 2019
+ * @version 02072025
  */
 public class Hurricane
 {
@@ -81,7 +83,8 @@ public class Hurricane
   //Getters
 
   /**
-   * Comment this method.
+   * name getter
+   * @return name
    */
   public String getName()
   {
@@ -89,7 +92,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * month getter
+   * @return month
    */
   public String getMonth()
   {
@@ -97,7 +101,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * pressure getter
+   * @return pressure
    */
   public int getPressure()
   {
@@ -105,7 +110,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * speed getter
+   * @return speed
    */
   public int getSpeed()
   {
@@ -113,7 +119,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * year getter
+   * @return year
    */
   public int getYear()
   {
@@ -121,7 +128,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * category getter
+   * @return category
    */
   public int getCategory()
   {
@@ -129,7 +137,7 @@ public class Hurricane
   }
 
   /**
-   * Comment this method even though you did not write it.
+   * lazy print method
    */
   public void print()
   {
@@ -137,7 +145,8 @@ public class Hurricane
   }
 
   /**
-   * Alter code a bit then comment this method even though you did not write it.
+   * returns a string representation of this hurricane 
+   * @return a string representation of this hurricane
    */
   public String toString()
   {
@@ -146,7 +155,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * compareTo for year 
+   * @return 1 if this year is greater, -1 if less, 0 otherwise
    */
   public int compareYearTo(Hurricane h)
   {
@@ -154,7 +164,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * compareTo for name 
+   * @return 1 if this name is greater, -1 if less, 0 otherwise
    */
   public int compareNameTo(Hurricane h)
   {
@@ -162,7 +173,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * compareTo for pressure
+   * @return 1 if this pressure is greater, -1 if less, 0 otherwise
    */
   public int comparePressureTo(Hurricane h)
   {
@@ -170,7 +182,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * compareTo for speed 
+   * @return 1 if this speed is greater, -1 if less, 0 otherwise
    */
   public int compareSpeedTo(Hurricane h)
   {
@@ -178,7 +191,8 @@ public class Hurricane
   }
 
   /**
-   * Comment this method.
+   * compareTo for category 
+   * @return 1 if this category is greater, -1 if less, 0 otherwise
    */
   public int compareCategoryTo(Hurricane h)
   {
