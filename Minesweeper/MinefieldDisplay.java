@@ -178,6 +178,9 @@ public class MinefieldDisplay implements MouseListener
     }
   }
 
+  /**
+   * win the game yay!!!!
+   */
   public void win() {
     face.setIcon(new ImageIcon("win_face.png"));
     face.setPreferredSize(new Dimension(30,30));
