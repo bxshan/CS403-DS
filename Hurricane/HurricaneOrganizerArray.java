@@ -486,12 +486,13 @@ public class HurricaneOrganizerArray
       }
       int end = --index;
       
-      Hurricane[] ret = new Hurricane[strt-end+1];
+      Hurricane[] ret = new Hurricane[end-strt+1];
       int idx = 0;
 
       while(strt != end+1) {
         ret[idx] = hurricanes[strt];
         strt++;
+        idx++;
       }
 
       return ret;  // correct this line
