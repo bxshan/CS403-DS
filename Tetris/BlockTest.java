@@ -144,7 +144,7 @@ public class BlockTest
         
         MyBoundedGrid<String> grid = new MyBoundedGrid<String>(2, 1);
         //Fix the assertion on the next line
-        assertEquals("getNumRows fails",4, grid.getNumRows());
+        assertEquals("getNumRows fails",2, grid.getNumRows());
         assertEquals("getNumCols fails",1, grid.getNumCols());
         System.out.println("  passed :)");
         
@@ -153,7 +153,7 @@ public class BlockTest
         
         assertEquals("isValid fails", true, grid.isValid(new Location(0, 0)));
         //Fix the assertion on the next line
-        assertEquals("isValid fails", false, grid.isValid(new Location(1, 0)));
+        assertEquals("isValid fails", true, grid.isValid(new Location(1, 0)));
         assertEquals("isValid fails", false, grid.isValid(new Location(2, 0)));
         assertEquals("isValid fails", false, grid.isValid(new Location(0, 1)));
         assertEquals("isValid fails", false, grid.isValid(new Location(0, -1)));
@@ -186,7 +186,7 @@ public class BlockTest
         grid.put(new Location(1, 0), firstValue);
         locs = grid.getOccupiedLocations();
         //Fix the assertion on the next line
-        assertEquals("getOccupiedLocations fails",0,locs.size());
+        assertEquals("getOccupiedLocations fails",1,locs.size());
         
         assertEquals("getOccupiedLocations fails",new Location(1, 0),locs.get(0));
         grid.put(new Location(0, 0), secondValue);
@@ -266,7 +266,7 @@ public class BlockTest
         r.moveTo(new Location(0, 1));
         display.showBlocks();
         //Fix the assertion on the next line
-        assertEquals("moveTo fails", grid, r.getGrid() );
+        assertEquals("moveTo fails", grid2, r.getGrid() );
         assertEquals("moveTo fails", new Location(0, 1), r.getLocation() );
         assertEquals("moveTo fails", r, grid2.get(new Location(0, 1)) );
 
@@ -292,7 +292,3 @@ public class BlockTest
         System.out.println("  passed all tests :) ");
     }
 }
-
-
-
-
