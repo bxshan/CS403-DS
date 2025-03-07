@@ -10,3 +10,7 @@
 
 # ignore my bash scripts 
 readmeupdate
+
+# aisldjkasjdsdjfksa intellij things
+*.iml
+.idea/*
