@@ -12,6 +12,6 @@
 readmeupdate
 
 # aisldjkasjdsdjfksa intellij things
-*.iml
-.idea/*
-out/*
+#*.iml
+#.idea/*
+#out/*
