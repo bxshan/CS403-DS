@@ -58,22 +58,30 @@ public class BlockDisplay extends JComponent implements KeyListener
      * this method should be invoked from the
      * event-dispatching thread.
      */
-    private void createAndShowGUI()
-    {
-        //Create and set up the window.
-        frame = new JFrame();
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(this);
-        frame.addKeyListener(this);
+    private void createAndShowGUI() {
+      frame = new JFrame();
+      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+      frame.getContentPane().add(this);
+      frame.addKeyListener(this);
 
-        //Display the window.
-        this.setPreferredSize(new Dimension(
-                BLOCKSIZE * board.getNumCols(),
-                BLOCKSIZE * board.getNumRows()
+      JPanel scorePanel = new JPanel();
+      scorePanel.setLayout(new BorderLayout());
+
+      JLabel scoreLabel = new JLabel("0", SwingConstants.CENTER);
+      scorePanel.add(scoreLabel, BorderLayout.WEST);
+
+      JLabel levelLabel = new JLabel("1", SwingConstants.CENTER);
+      scorePanel.add(levelLabel, BorderLayout.EAST);
+
+      frame.getContentPane().add(scorePanel, BorderLayout.NORTH);
+
+      this.setPreferredSize(new Dimension(
+            BLOCKSIZE * board.getNumCols(),
+            BLOCKSIZE * board.getNumRows()
             ));
 
-        frame.pack();
-        frame.setVisible(true);
+      frame.pack();
+      frame.setVisible(true);
     }
 
     public void paintComponent(Graphics g)
@@ -138,5 +146,25 @@ public class BlockDisplay extends JComponent implements KeyListener
     public void setArrowListener(ArrowListener listener)
     {
         this.listener = listener;
+    }
+
+    //--------
+
+    public void incrementScore(int increment) {
+      JLabel sl = (JLabel) ((JPanel) frame.getContentPane().getComponent(1)).getComponent(0);
+      sl.setText(Integer.toString(Integer.parseInt(sl.getText()) + increment));
+    }
+
+    public void setLvl(int lvl) {
+      JLabel ll = (JLabel) ((JPanel) frame.getContentPane().getComponent(1)).getComponent(1);
+      ll.setText(Integer.toString(lvl));
+    }
+
+    public void setLost() {
+      JLabel sl = (JLabel) ((JPanel) frame.getContentPane().getComponent(1)).getComponent(0);
+      sl.setText(sl.getText() + "\t\t\t\t\t\tGame");
+
+      JLabel ll = (JLabel) ((JPanel) frame.getContentPane().getComponent(1)).getComponent(1);
+      ll.setText("Over\t\t\t\t\t\t" + ll.getText());
     }
 }

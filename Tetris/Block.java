@@ -11,6 +11,16 @@ public class Block
   private Color color;
 
   /**
+   * default constructor bc previous author wouldnt provide one
+   */
+  public Block(Color c)
+  {
+    color = c;
+    grid = null;
+    location = null;
+  }
+
+  /**
    * constructs a blue block, because blue is the greatest color ever!
    */
   public Block()
