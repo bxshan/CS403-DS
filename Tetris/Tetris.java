@@ -6,6 +6,8 @@ public class Tetris implements ArrowListener {
   private MyBoundedGrid<Block> field;
   private BlockDisplay display;
   private Tetrad tet;
+
+  private int nextType;
   
   private int rowsCleared;
   private int lvl;
@@ -19,7 +21,8 @@ public class Tetris implements ArrowListener {
     this.display.setArrowListener(this);
     this.display.showBlocks();
 
-    this.tet = new Tetrad(this.field);
+    this.tet = new Tetrad(this.field, (int) (Math.random() * 7));
+    this.nextType = (int) (Math.random() * 7);
 
     this.rowsCleared = 0;
     this.lvl = 1;
@@ -37,6 +40,17 @@ public class Tetris implements ArrowListener {
     else if (cr == 3) return 300;
     else if (cr == 4) return 1200;
     else return 0;
+  }
+
+  private String nextTypeStringFormat(int nt) {
+    if (nt == 0) return "I";
+    else if (nt == 1) return "T";
+    else if (nt == 2) return "O";
+    else if (nt == 3) return "L";
+    else if (nt == 4) return "J";
+    else if (nt == 5) return "S";
+    else if (nt == 6) return "Z";
+    else return "";
   }
 
   private void d() {
@@ -150,7 +164,6 @@ public class Tetris implements ArrowListener {
 
     // show lost
     // TO DO
-
   }
 
   public void play() {
@@ -162,13 +175,20 @@ public class Tetris implements ArrowListener {
       }
       if (!this.tet.translate(1, 0)) {
         int cr = clearCompletedRows();
+
         this.display.incrementScore(determineIncrement(cr) * this.lvl);
+
         this.rowsCleared += cr;
+
         this.lvl = rowsCleared/10;
         if (this.lvl == 0) this.lvl = 1;
-        System.out.println(this.lvl);
         this.display.setLvl(this.lvl);
-        this.tet = new Tetrad(this.field);
+
+        this.tet = new Tetrad(this.field, this.nextType);
+
+        this.nextType = (int) (Math.random() * 7);
+        this.display.setTitle("Next Type: " + nextTypeStringFormat(this.nextType));
+
         if (this.tet.lost) {
           System.out.println("Game Over");
           this.lose();
@@ -176,11 +196,11 @@ public class Tetris implements ArrowListener {
         }
       }
       this.display.showBlocks();
-      this.d();
+      //this.d();
     }
   }
 
   public static void main(String[] args) {
-    Tetris tetris = new Tetris();
+    new Tetris();
   }
 }

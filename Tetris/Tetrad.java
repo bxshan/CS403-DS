@@ -5,7 +5,6 @@ import java.util.concurrent.Semaphore;
 public class Tetrad {
   private MyBoundedGrid<Block> home;
   private Block[] blocks;
-  private int type;
   private Semaphore lock;
 
   public boolean lost;
@@ -40,14 +39,11 @@ public class Tetrad {
     {0, -1, 0, 1}  // 6
   };
 
-  public Tetrad(MyBoundedGrid<Block> g) {
+  public Tetrad(MyBoundedGrid<Block> g, int type) {
     this.home = g;
     this.blocks = new Block[4]; 
-    this.type = (int) (Math.random() * 7);
     this.lock = new Semaphore(1, true);
     int ctr = (int) (this.home.getNumCols()/2) - 1;
-
-    this.type = 0;
 
     Location[] ls = new Location[4];
 
