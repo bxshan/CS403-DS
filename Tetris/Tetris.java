@@ -1,6 +1,5 @@
 import java.util.*;
 import java.awt.*;
-import java.util.concurrent.Semaphore;
 
 public class Tetris implements ArrowListener {
   private MyBoundedGrid<Block> field;
@@ -15,7 +14,7 @@ public class Tetris implements ArrowListener {
   public Tetris(int r, int c) {
     if (r < 20) r = 20;
     if (c < 10) c = 10;
-    this.field = new MyBoundedGrid(r, c);
+    this.field = new MyBoundedGrid<Block>(r, c);
     this.display = new BlockDisplay(this.field);
     this.display.setTitle("Tetbris");
     this.display.setArrowListener(this);
