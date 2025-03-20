@@ -15,6 +15,8 @@ public class Board extends BoundedGrid<Piece>
 	//                and any captured piece is returned to its location
 	public void undoMove(Move move)
 	{
+    if (move == null) return;
+
 		Piece piece = move.getPiece();
 		Location source = move.getSource();
 		Location dest = move.getDestination();
@@ -49,4 +51,20 @@ public class Board extends BoundedGrid<Piece>
     m.getPiece().moveTo(m.getDestination());
   }
 
+  public boolean inCheck(Color c) {
+    ArrayList<Location> ls = this.getOccupiedLocations();
+
+    for (Location l : ls) {
+      Piece p = this.get(l);
+      if (p instanceof King) continue;
+      ArrayList<Location> hits = p.destinations();
+      for (Location hit : hits) {
+        if (this.get(hit) instanceof King) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  }
 }

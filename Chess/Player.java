@@ -23,5 +23,5 @@ public abstract class Player {
     return this.c;
   }
 
-  public abstract Move nextMove();
+  public abstract Move nextMove(boolean inCheck);
 }

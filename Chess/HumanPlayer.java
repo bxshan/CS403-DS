@@ -10,12 +10,28 @@ public class HumanPlayer extends Player {
     this.d = d;
   }
 
-  public Move nextMove() {
-    ArrayList<Move> possible = this.getBoard().allMoves(this.getColor());
+  public Move nextMove(boolean inCheck) {
+    Board b = this.getBoard();
+    Color c = this.getColor();
+    ArrayList<Move> possible = b.allMoves(c);
+
+    // check for checkmate
+    boolean js = true;
+    if (inCheck) {
+      for (Move m : possible) {
+        b.executeMove(m);
+        if (!b.inCheck(this.getColor())) js = false;
+        b.undoMove(m);
+      }
+    }
+    if (js && inCheck) {
+      return null;
+    }
+
     Move choice = this.d.selectMove();
 
-    while(!possible.contains(choice)) {
-      possible = this.getBoard().allMoves(this.getColor());
+    while(!possible.contains(choice) && !b.inCheck(c)) {
+      possible = b.allMoves(c);
       choice = this.d.selectMove();
     }
     
