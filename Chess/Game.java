@@ -129,8 +129,10 @@ public class Game {
     // DISPLAY
     BoardDisplay d = new BoardDisplay(b);
     
-    wp = new StockfishPlayer(b, "box", Color.WHITE, d, 25);
+    wp = new HumanPlayer(b, "box", Color.WHITE, d);
     bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 25);
+    // last param of StockfishPlayer constructor the max search depth
+    // <30 for performance, >20 for decently smart play
 
     // stockfish message
     if (wp instanceof StockfishPlayer && bp instanceof StockfishPlayer) {
