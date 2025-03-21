@@ -21,7 +21,7 @@ public class Game {
   private static final int[] pdy = {0, 1, 2, 3, 4, 5, 6, 7};
 
   private static boolean nextTurn(Board b, BoardDisplay d, Player p, boolean inCheck) {
-    d.setTitle(p.getName());
+    if (!(wp instanceof StockfishPlayer || bp instanceof StockfishPlayer)) d.setTitle(p.getName());
     Move m = p.nextMove(inCheck);
 
     if (m == null) {
@@ -129,8 +129,18 @@ public class Game {
     // DISPLAY
     BoardDisplay d = new BoardDisplay(b);
     
-    wp = new HumanPlayer(b, "box", Color.WHITE, d);
-    bp = new SmartPlayer(b, "xob", Color.BLACK, 2);
+    wp = new StockfishPlayer(b, "box", Color.WHITE, d, 25);
+    bp = new StockfishPlayer(b, "xob", Color.BLACK, d, 25);
+
+    // stockfish message
+    if (wp instanceof StockfishPlayer && bp instanceof StockfishPlayer) {
+      d.setTitle("white stockfish depth " + ((StockfishPlayer) wp).getDepth() + 
+          "; black stockfish depth " + ((StockfishPlayer) bp).getDepth());
+    } else if (wp instanceof StockfishPlayer) {
+      d.setTitle("white stockfish depth " + ((StockfishPlayer) wp).getDepth());
+    } else if (bp instanceof StockfishPlayer) {
+      d.setTitle("black stockfish depth " + ((StockfishPlayer) bp).getDepth());
+    }
 
     play(b, d, wp, false);
   }

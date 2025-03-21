@@ -136,6 +136,22 @@ public abstract class Piece {
 
   public abstract ArrayList<Location> destinations();
 
+  public char getFenName() {
+    if (this instanceof King) {
+      return this.color.equals(Color.WHITE) ? 'K' : 'k';
+    } else if (this instanceof Queen) {
+      return this.color.equals(Color.WHITE) ? 'Q' : 'q';
+    } else if (this instanceof Rook) {
+      return this.color.equals(Color.WHITE) ? 'R' : 'r';
+    } else if (this instanceof Bishop) {
+      return this.color.equals(Color.WHITE) ? 'B' : 'b';
+    } else if (this instanceof Knight) {
+      return this.color.equals(Color.WHITE) ? 'N' : 'n';
+    } else {
+      return this.color.equals(Color.WHITE) ? 'P' : 'p';
+    }
+  }
+
   public void sweep(ArrayList<Location> ls, int f) {
     Location next = this.location.getAdjacentLocation(f);
     while(isValidDestination(next)) {

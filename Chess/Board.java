@@ -67,4 +67,54 @@ public class Board extends BoundedGrid<Piece>
 
     return false;
   }
+
+  public String getFen(boolean c) {
+    String fen = "";
+
+    // field 1
+
+    for (int i = 0; i < 8; i++) {
+      int empty = 0;
+      for (int j = 0; j < 8; j++) {
+        Location l = new Location(i, j);
+        Piece p = this.get(l);
+        if (p == null) {
+          empty++;
+        } else {
+          if (empty > 0) {
+            fen += empty;
+            empty = 0;
+          }
+          fen += p.getFenName();
+        }
+      }
+      if (empty > 0) {
+        fen += empty;
+      }
+      if (i < 7) {
+        fen += "/";
+      }
+    }
+
+    // field 2
+    
+    if (c) {
+      fen += " w ";
+    } else {
+      fen += " b ";
+    }
+
+    // field 3
+    // no castling implemented yet
+    fen += "- ";
+
+    // field 4
+    // no en passant implemented yet
+    fen += "- ";
+
+    // field 5 & 6
+    fen += "0 1";
+
+    return fen;
+  }
 }
