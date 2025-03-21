@@ -3,21 +3,21 @@
 ## &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last 3 commits:
 
 ```
-commit 47f5e79
-  +minimax impl., check and checkmate detection
-  at 2025-03-19 22:04:33 -0700
+commit 906645f
+  insignificant
+  at 2025-03-20 21:09:14 -0700
 ```
 
 
 ```
-commit f071db8
-  
-  at 2025-03-18 21:49:53 -0700
+commit de5a5e8
+  helper methods to work with uci, stockfish
+  at 2025-03-20 21:07:11 -0700
 ```
 
 
 ```
-commit 80d24da
-  +Chess, although unfinished
-  at 2025-03-18 21:42:46 -0700
+commit 7c3b325
+  stockfish integration
+  at 2025-03-20 21:06:33 -0700
 ```
