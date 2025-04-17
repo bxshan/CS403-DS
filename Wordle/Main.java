@@ -1,4 +1,10 @@
+/**
+ * the main class that is a tester
+ */
 public class Main {
+  /*
+  tests the classes by having it print hello
+   */
   public static void main(String[] args) {
     // 01101000 01100101 01101100 01101100 01101111 00001010
     Bit[][] bitarr = {
